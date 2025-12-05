@@ -1,5 +1,7 @@
 
 
+Perfect Fit = izdelava kosa Patricia Pie po meritvah in specifičnih merah stranke. 
+
 Perfect Fit predstavlja srce znamke Patricia Pie — osebno couture izkušnjo, zasnovano za ženske, ki pričakujejo več kot samo oblačilo.
  Perfect Fit je kombinacija natančnosti, intuicije, strokovnosti in iskrene želje, da se vsaka ženska počuti samozavestno, elegantno in avtentično.
 Od leta 2025 Perfect Fit deluje na treh lokacijah, kar omogoča popolno fleksibilnost:

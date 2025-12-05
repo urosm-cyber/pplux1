@@ -108,12 +108,12 @@ export default function PerfectFitPage() {
         <Section className="bg-background text-center">
           <div className="max-w-3xl mx-auto space-y-6">
             <Heading size="lg">Srce znamke Patricia Pie</Heading>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Perfect Fit je osebna couture izkušnja, zasnovana za ženske, ki pričakujejo več kot samo oblačilo.
-              To je kombinacija natančnosti, intuicije, strokovnosti in iskrene želje, da se vsaka ženska počuti samozavestno, elegantno in avtentično.
+            <p className="text-xl font-medium text-foreground leading-relaxed">
+              Perfect Fit = izdelava kosa Patricia Pie po meritvah in specifičnih merah stranke.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Ne gre le za oblačilo po meri. Je izkušnja, kjer se moda prilagodi vašemu telesu in življenjskemu slogu, ne obratno.
+              Perfect Fit predstavlja srce znamke Patricia Pie — osebno couture izkušnjo, zasnovano za ženske, ki pričakujejo več kot samo oblačilo.
+              Je kombinacija natančnosti, intuicije, strokovnosti in iskrene želje, da se vsaka ženska počuti samozavestno, elegantno in avtentično.
             </p>
           </div>
         </Section>
@@ -148,14 +148,22 @@ export default function PerfectFitPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
-                    <span>Popolna osredotočenost — 1 stranka = 1 termin</span>
+                    <span>Popolna osredotočenost na stranko</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
+                    <span>Idealen za meritve, svetovanje, final fitting</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
+                    <span>Zasebno, 1 stranka = 1 termin</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
                     <span>Brezplačno parkirišče pred stavbo</span>
                   </li>
                 </ul>
-                <p className="text-sm italic text-tertiary/80">Premium izbira za celostno Perfect Fit izkušnjo.</p>
+                <p className="text-sm italic text-tertiary/80">Premium izbira in priporočena lokacija za celostno izkušnjo.</p>
               </div>
             </motion.div>
 
@@ -182,18 +190,22 @@ export default function PerfectFitPage() {
                 <ul className="space-y-3 text-muted-foreground mb-6">
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
-                    <span>Idealno za stranke v centru mesta</span>
+                    <span>Pomerjanje in svetovanje možno</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
-                    <span>Pomerjanje in svetovanje možno</span>
+                    <span>Idealno za stranke, ki so v centru mesta</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
                     <span>Barbara izvede meritve in posvet</span>
                   </li>
+                  <li className="flex items-start gap-2 text-muted-foreground/70">
+                     <span className="w-4 text-center mr-2">⟳</span>
+                     <span>Možne motnje (druge stranke)</span>
+                  </li>
                 </ul>
-                <p className="text-sm italic text-tertiary/80">Odlična alternativa za hitro pomerjanje.</p>
+                <p className="text-sm italic text-tertiary/80">Odlična alternativa za hitro opravljene meritve.</p>
               </div>
             </motion.div>
 
@@ -228,10 +240,14 @@ export default function PerfectFitPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-tertiary mt-1 flex-shrink-0" />
-                    <span>Idealno za severovzhodno Slovenijo</span>
+                    <span>Idealno za stranke iz severovzhodne Slovenije</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-muted-foreground/70">
+                     <span className="w-4 text-center mr-2">⟳</span>
+                     <span>Bolj delovno-kreativno okolje</span>
                   </li>
                 </ul>
-                <p className="text-sm italic text-tertiary/80">&ldquo;Iza kulis&rdquo; izkušnja Patricia Pie.</p>
+                <p className="text-sm italic text-tertiary/80">Za ženske, ki želijo &ldquo;iza kulis&rdquo; izkušnjo.</p>
               </div>
             </motion.div>
           </div>
@@ -249,19 +265,19 @@ export default function PerfectFitPage() {
               <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-background shadow-lg">
                  <CloudinaryImage
                     src="HeartstringsOfPassion__13_cqrkyk"
-                    alt="Osebni posvet"
+                    alt="Osebni uvodni posvet"
                     fill
                     containerClassName="h-full w-full"
                     className="object-cover"
                  />
               </div>
               <div className="bg-background px-4 py-1 rounded-full border border-tertiary/30 text-tertiary font-heading font-bold text-xl">
-                01
+                FAZA 1
               </div>
-              <h3 className="text-2xl font-heading">Osebni posvet</h3>
+              <h3 className="text-2xl font-heading">Osebni uvodni posvet</h3>
               <p className="text-muted-foreground">
-                Barbara vodi topel, sproščen pogovor o tvojem stilu, življenjskem slogu, barvah, silhuetah in željah. 
-                Izbereš model in materiale. V showroomu poteka ob kavi, čaju ali penini.
+                Barbara vodi topel, sproščen, prijateljski pogovor: osebni stil, življenjski slog, posebne priložnosti, barve, silhuete in želje.
+                V showroomu ta del poteka v lounge kotičku ob kavi ali penini.
               </p>
             </div>
 
@@ -270,19 +286,19 @@ export default function PerfectFitPage() {
               <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-background shadow-lg">
                  <CloudinaryImage
                     src="collections/Symphonia/Symphonia_190_xchxis"
-                    alt="Izdelava v ateljeju"
+                    alt="Natančne meritve"
                     fill
                     containerClassName="h-full w-full"
                     className="object-cover"
                  />
               </div>
               <div className="bg-background px-4 py-1 rounded-full border border-tertiary/30 text-tertiary font-heading font-bold text-xl">
-                02
+                FAZA 2
               </div>
-              <h3 className="text-2xl font-heading">Natančne meritve</h3>
+              <h3 className="text-2xl font-heading">Natančne meritve & analiza</h3>
               <p className="text-muted-foreground">
-                Barbara izvede 12+ meritev, opazuje tvojo držo, pregleda proporce in priporoči linije, dolžine in materiale. 
-                Tvoj kos nastaja v našem ateljeju v Sloveniji z natančnostjo in ljubeznijo.
+                Barbara izvede 12+ meritev, opazuje držo, oceni proporce in gibanje. Poda priporočila za linije, dolžine in materiale.
+                To je temelj za &quot;perfect fit&quot; občutek.
               </p>
             </div>
 
@@ -291,19 +307,19 @@ export default function PerfectFitPage() {
               <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-background shadow-lg">
                  <CloudinaryImage
                     src="HeartstringsOfPassion__2_qjedlh"
-                    alt="Končna proba"
+                    alt="Final fitting"
                     fill
                     containerClassName="h-full w-full"
                     className="object-cover"
                  />
               </div>
               <div className="bg-background px-4 py-1 rounded-full border border-tertiary/30 text-tertiary font-heading font-bold text-xl">
-                03
+                FAZA 3
               </div>
-              <h3 className="text-2xl font-heading">Končni pregled</h3>
+              <h3 className="text-2xl font-heading">Final fitting</h3>
               <p className="text-muted-foreground">
-                Ko je oblačilo narejeno do 90%, prideš na končni pregled. Poskrbimo za vsak detajl — dolžino, šive, občutek na telesu. 
-                V showroomu te čaka mir, naravna svetloba in popolna intimnost. Odihaš samozavestno, elegantno in v oblačilu, ki je resnično tvoje.
+                Ko je oblačilo narejeno do 90%, sledi final fitting. Najlepše se izvede v showroomu zaradi miru in svetlobe.
+                Poskrbimo za vsak detajl, udobje in tisti &quot;to je to&quot; občutek.
               </p>
             </div>
           </div>
