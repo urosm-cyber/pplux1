@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
 import { Heading } from '@/components/ui/Heading';
@@ -6,7 +7,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CloudinaryImage from '@/components/shared/CloudinaryImage';
 import Hero from '@/components/sections/Hero';
-import { Check } from 'lucide-react';
+import Newsletter from '@/components/sections/Newsletter';
+import { Check, Gift } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -64,7 +66,7 @@ export default function Home() {
             {[
               { id: 'look-1', title: 'Symphonia Look 01', image: 'collections/Symphonia/Symphonia_209_gasqsx' },
               { id: 'look-2', title: 'Symphonia Look 02', image: 'collections/Symphonia/Symphonia_190_xchxis' },
-              { id: 'look-3', title: 'Symphonia Look 03', image: 'hero-homepage_4c9fd9' }
+              { id: 'look-3', title: 'Symphonia Look 03', image: 'Bluza_Karo_biseri_3_ljbdr5' }
             ].map((item) => (
               <Link key={item.id} href="/kolekcije/fw25-symphonia" className="group block">
                 <div className="relative overflow-hidden aspect-3/4 mb-4">
@@ -72,6 +74,7 @@ export default function Home() {
                     src={item.image} 
                     alt={item.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     containerClassName="h-full w-full"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -88,18 +91,19 @@ export default function Home() {
         {/* Perfect Fit Teaser */}
         <Section className="bg-background">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative aspect-square lg:aspect-[4/3]">
+            <div className="order-2 lg:order-1 relative aspect-square lg:aspect-4/3">
                <CloudinaryImage 
-                  src="HeartstringsOfPassion__2_qjedlh" 
+                  src="HeartstringsOfPassion__17_lidjwq" 
                   alt="Perfect Fit proces"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   containerClassName="h-full w-full"
                   className="object-cover rounded-sm"
                />
             </div>
             <div className="order-1 lg:order-2 space-y-6">
               <Heading size="xl">Perfect Fit</Heading>
-              <h3 className="text-2xl font-light text-tertiary">Osebno. Natančno. Vaše.</h3>
+              <h3 className="text-2xl font-light text-tertiary">Osebno. Natančno. Tvoje.</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Pozabi na konfekcijske številke, ki se ti ne prilegajo. 
                 Naša storitev Perfect Fit zagotavlja, da je vsak kos prilagojen tvojim meram in postavi.
@@ -116,7 +120,7 @@ export default function Home() {
                   <div className="p-1 rounded-full bg-tertiary/10">
                     <Check className="h-4 w-4 text-tertiary" />
                   </div>
-                  <span className="text-lg">Izdelava po meri v 5-10 dneh</span>
+                  <span className="text-lg">Perfect Fit v 5-10 dneh</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="p-1 rounded-full bg-tertiary/10">
@@ -126,9 +130,15 @@ export default function Home() {
                 </li>
               </ul>
               <div className="pt-6">
-                <Link href="/perfect-fit">
-                  <Button variant="primary">Kako deluje Perfect Fit</Button>
-                </Link>
+                <div className="mb-6 inline-flex items-center gap-3 px-5 py-2.5 bg-tertiary/5 rounded-full border border-tertiary/20 text-tertiary w-fit">
+                   <Gift className="w-4 h-4" strokeWidth={1.5} />
+                   <span className="font-medium tracking-wide text-sm">Prvi obisk brezplačen</span>
+                </div>
+                <div className="block">
+                  <Link href="/perfect-fit">
+                    <Button variant="primary">Kako deluje Perfect Fit</Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -138,11 +148,11 @@ export default function Home() {
         <Section className="relative h-[600px] w-full overflow-hidden flex items-center justify-center text-center">
           <div className="absolute inset-0">
              <CloudinaryImage 
-                src="/images/showroom/detail.png" 
+                src="showroom-detail_je8xir" 
                 alt="Showroom Experience"
                 fill
-                containerClassName="h-full w-full"
                 className="object-cover"
+                containerClassName="h-full w-full"
              />
              <div className="absolute inset-0 bg-black/40" />
           </div>
@@ -192,6 +202,9 @@ export default function Home() {
         </Section>
       </main>
 
+
+
+      <Newsletter />
       <Footer />
     </div>
   );

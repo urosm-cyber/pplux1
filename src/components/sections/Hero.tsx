@@ -4,8 +4,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import CloudinaryImage from "@/components/shared/CloudinaryImage";
+import { useBooking } from "@/components/booking/BookingContext";
 
 export default function Hero() {
+  const { openBooking } = useBooking();
   return (
     <section className="relative h-[95vh] w-screen overflow-hidden">
       {/* Background image */}
@@ -22,8 +24,8 @@ export default function Hero() {
           priority
         />
 
-        {/* Elegant Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+        {/* Elegant Gradient Overlay - Increased opacity for better text visibility */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Hero content */}
@@ -33,8 +35,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         >
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light mb-6 tracking-wide drop-shadow-xl">
-            Oblačila, ki vas razumejo
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light mb-6 tracking-wide drop-shadow-2xl">
+            Oblačila, ki te razumejo
           </h1>
         </motion.div>
 
@@ -43,8 +45,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
         >
-          <p className="text-lg md:text-2xl max-w-2xl mb-12 font-light tracking-wider drop-shadow-md text-white/90">
-            Popolna mera. Osebni pristop. Brezčasna eleganca.
+          <p className="text-lg md:text-2xl max-w-2xl mb-12 font-light tracking-wider drop-shadow-xl text-white">
+            Popolno prileganje. Osebni pristop. Brezčasna eleganca.
           </p>
         </motion.div>
 
@@ -54,15 +56,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-6"
         >
-          <Link href="/showroom">
             <Button
               variant="primary"
               size="lg"
               className="min-w-[220px] bg-white text-black hover:bg-white/90 border-none"
+              onClick={openBooking}
             >
               Rezerviraj termin
             </Button>
-          </Link>
           <Link href="/kolekcije">
             <Button
               variant="outline"

@@ -3,7 +3,7 @@ Below are links to the images on Cloudinary. Please upload images with the recom
 ### Homepage
 
 - **Hero Image**: [PROVIDED] `hero-homepage_4c9fd9` (https://res.cloudinary.com/dqofx6x3k/image/upload/v1764786813/hero-homepage_4c9fd9.jpg)
-- **Perfect Fit Teaser**: `https://res.cloudinary.com/dqofx6x3k/image/upload/v1764520348/HeartstringsOfPassion__2_qjedlh.webp
+- **Perfect Fit Teaser**: `HeartstringsOfPassion\_\_17_lidjwq
   - _Ratio_: 3:4 (Portrait) or 1:1 (Square)
   - _Min Resolution_: 1200x1600px
 - **Showroom Teaser**: `please create the image using nano banana -  - it should be a closeup of fashion luxury garmetn  rack or simialr`
@@ -14,7 +14,7 @@ Below are links to the images on Cloudinary. Please upload images with the recom
 - **Najnovejše (Latest Collection Highlight - FW25 Symphonia)**:
   - **Look 1**: [PROVIDED] `collections/Symphonia/Symphonia_209_gasqsx`
   - **Look 2**: [PROVIDED] `collections/Symphonia/Symphonia_190_xchxis`
-  - **Look 3**: `https://res.cloudinary.com/dqofx6x3k/image/upload/v1764426823/collections/Symphonia/Symphonia_123_ypxtm4.webp
+  - **Look 3**: `Bluza_Karo_biseri_3_ljbdr5
     - _Ratio_: 3:4 (Portrait)
     - _Min Resolution_: 1000x1333px
 
@@ -44,7 +44,7 @@ Below are links to the images on Cloudinary. Please upload images with the recom
 - **FW-24 Heartstrings Of Passion**: https://res.cloudinary.com/dqofx6x3k/image/upload/v1764520348/HeartstringsOfPassion__2_qjedlh.webp
   - _Ratio_: 3:4 (Portrait)
   - _Min Resolution_: 1000x1333px
-- **SS25-Voyage Blanc**: `https://res.cloudinary.com/dqofx6x3k/image/upload/v1764452016/10_Vijola_obleka_15_hbchcq.webp
+- **SS25-Voyage Blanc**: `https://res.cloudinary.com/dqofx6x3k/image/upload/v1764452016/10_Vijola_obleka_2_goidcs.webp
   - _Ratio_: 3:4 (Portrait)
   - _Min Resolution_: 1000x1333px
 - **FW25-Symphonia**: https://res.cloudinary.com/dqofx6x3k/image/upload/v1764427739/collections/Symphonia/Symphonia_209_gasqsx.webp`
@@ -56,7 +56,7 @@ Below are links to the images on Cloudinary. Please upload images with the recom
 
 ### Perfect Fit Page
 
-- **Hero Image**: `https://res.cloudinary.com/dqofx6x3k/image/upload/v1764520395/HeartstringsOfPassion__13_cqrkyk.webp
+- **Hero Image**: HeartstringsOfPassion\_\_4_mvt3ks
   - _Ratio_: 16:9 (Wide Landscape)
   - _Min Resolution_: 1920x1080px
 - **Process Step 1 (Consultation)**: `create in nanobanana
@@ -69,8 +69,9 @@ Below are links to the images on Cloudinary. Please upload images with the recom
   - _Ratio_: 1:1 (Square) or 4:3
   - _Min Resolution_: 800x800px
 
-### Showroom Page -please create images in n nano banana     
-- **Hero Image**: `[WAITING FOR LINK]`
+### Showroom Page -please create images in n nano banana
+
+- **Hero Image**: showroom-detail_je8xir
   - _Ratio_: 16:9 (Wide Landscape)
   - _Min Resolution_: 1920x1080px
 - **Detail Shot 1** (Interior): `[WAITING FOR LINK]`

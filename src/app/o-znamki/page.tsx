@@ -104,7 +104,7 @@ export default function AboutPage() {
             <Heading size="xl" className="mb-10 text-deep-warm">The Pie Philosophy</Heading>
             
             <p className="text-xl md:text-2xl text-warm-gray leading-relaxed font-heading italic mb-12">
-              &quot;Vsak kos je sestavina vaše popolne garderobe.&quot;
+              &quot;Vsak kos je sestavina tvoje popolne garderobe.&quot;
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-16">
@@ -125,7 +125,7 @@ export default function AboutPage() {
               <div className="bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-shadow border-t-2 border-secondary">
                 <h3 className="font-heading text-xl font-semibold mb-4 text-deep-warm">Perfect Fit</h3>
                 <p className="text-warm-gray leading-relaxed">
-                  Ni treba, da se vi prilagodite obleki. Obleka se mora prilagoditi vam. 
+                  Ni treba, da se ti prilagodiš obleki. Obleka se mora prilagoditi tebi. 
                   To je bistvo našega &apos;Perfect Fit&apos; pristopa že od samega začetka.
                 </p>
               </div>
@@ -231,7 +231,7 @@ export default function AboutPage() {
                        <h3 className="font-heading text-xl font-semibold text-foreground uppercase tracking-wider">Osebna Preobrazba</h3>
                        <div className="w-8 h-px bg-tertiary mx-auto opacity-50"></div>
                        <p className="text-sm text-warm-gray leading-relaxed font-light">
-                          Pomagamo vam, da z oblačili izrazite svojo avtentičnost in se počutite bolj &apos;vi&apos;.
+                          Pomagamo ti, da z oblačili izraziš svojo avtentičnost in se počutiš bolj &apos;ti&apos;.
                        </p>
                     </div>
                  </motion.div>

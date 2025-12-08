@@ -5,19 +5,25 @@ import { Heading } from '@/components/ui/Heading';
 import { Button } from '@/components/ui/Button';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { sendContactForm } from '@/app/actions';
+import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
-    // Simulate form submission
-    setTimeout(() => {
+    
+    const formData = new FormData(e.currentTarget);
+    const result = await sendContactForm(formData);
+
+    if (result.success) {
       setFormState('success');
-    }, 1000);
+    } else {
+      setFormState('error');
+    }
   };
 
   return (
@@ -28,7 +34,7 @@ export default function ContactPage() {
            <div className="text-center max-w-3xl mx-auto">
               <Heading as="h1" size="xl" className="mb-6">Kontakt</Heading>
               <p className="text-lg text-muted-foreground">
-                 Tukaj smo za vas. Rezervirajte termin, povprašajte o kolekcijah ali pa nas preprosto pozdravite.
+                 Tukaj smo zate. Rezerviraj termin, povprašaj o kolekcijah ali pa nas preprosto pozdravi.
               </p>
            </div>
         </Section>
@@ -74,77 +80,95 @@ export default function ContactPage() {
                      </div>
                      <div className="flex gap-4 items-center">
                         <Mail className="h-5 w-5 text-tertiary" />
-                        <a href="mailto:info@patriciapie.com" className="hover:text-tertiary transition-colors">info@patriciapie.com</a>
+                        <a href="mailto:info@patriciapie.si" className="hover:text-tertiary transition-colors">info@patriciapie.si</a>
                      </div>
                   </div>
                </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-background border border-secondary p-8 rounded-sm shadow-sm">
+            <div className="bg-background border border-secondary p-8 rounded-sm shadow-sm relative overflow-hidden">
                <Heading size="md" className="mb-6">Pošljite sporočilo</Heading>
+               
                {formState === 'success' ? (
-                  <div className="text-center py-12 space-y-4">
-                     <div className="text-4xl">✨</div>
-                     <h3 className="text-xl font-bold">Hvala za vaše sporočilo!</h3>
-                     <p className="text-muted-foreground">Odgovorili vam bomo v najkrajšem možnem času.</p>
-                     <Button variant="outline" onClick={() => setFormState('idle')}>Pošlji novo sporočilo</Button>
+                  <div className="absolute inset-0 z-10 bg-background/95 backdrop-blur-sm flex flex-col items-center justify-center text-center p-8 animate-in fade-in zoom-in duration-300">
+                     <div className="h-16 w-16 bg-tertiary/10 rounded-full flex items-center justify-center mb-6">
+                        <CheckCircle2 className="h-8 w-8 text-tertiary" />
+                     </div>
+                     <h3 className="font-heading text-2xl mb-2">Hvala za tvoje sporočilo!</h3>
+                     <p className="text-muted-foreground mb-8 text-sm md:text-base max-w-xs">
+                        Uspešno smo prejeli tvoje sporočilo. Odgovorili ti bomo v najkrajšem možnem času.
+                     </p>
+                     <Button variant="outline" onClick={() => setFormState('idle')}>
+                        Pošlji novo sporočilo
+                     </Button>
                   </div>
-               ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                           <label htmlFor="name" className="text-sm font-medium">Ime in priimek</label>
-                           <input 
-                              type="text" 
-                              id="name" 
-                              required 
-                              className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
-                              placeholder="Janez Novak"
-                           />
-                        </div>
-                        <div className="space-y-2">
-                           <label htmlFor="email" className="text-sm font-medium">E-naslov</label>
-                           <input 
-                              type="email" 
-                              id="email" 
-                              required 
-                              className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
-                              placeholder="janez@example.com"
-                           />
-                        </div>
-                     </div>
+               ) : null}
+
+               <form onSubmit={handleSubmit} className={`space-y-6 ${formState === 'success' ? 'opacity-0' : 'opacity-100'}`}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                      <div className="space-y-2">
-                        <label htmlFor="type" className="text-sm font-medium">Vrsta povpraševanja</label>
-                        <select 
-                           id="type" 
-                           className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
-                        >
-                           <option>Splošno povpraševanje</option>
-                           <option>Rezervacija termina (Showroom)</option>
-                           <option>Perfect Fit svetovanje</option>
-                        </select>
-                     </div>
-                     <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium">Sporočilo</label>
-                        <textarea 
-                           id="message" 
+                        <label htmlFor="name" className="text-sm font-medium">Tvoje ime</label>
+                        <input 
+                           name="name"
+                           type="text" 
+                           id="name" 
                            required 
-                           rows={5}
-                           className="w-full p-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all resize-none"
-                           placeholder="Vaše sporočilo..."
+                           className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
+                           placeholder="Ana Novak"
                         />
                      </div>
-                     <Button 
-                        type="submit" 
-                        variant="primary" 
-                        className="w-full"
-                        disabled={formState === 'submitting'}
+                     <div className="space-y-2">
+                        <label htmlFor="email" className="text-sm font-medium">E-naslov</label>
+                        <input 
+                           name="email"
+                           type="email" 
+                           id="email" 
+                           required 
+                           className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
+                           placeholder="ana@example.com"
+                        />
+                     </div>
+                  </div>
+                  <div className="space-y-2">
+                     <label htmlFor="type" className="text-sm font-medium">Vrsta povpraševanja</label>
+                     <select 
+                        name="type"
+                        id="type" 
+                        className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
                      >
-                        {formState === 'submitting' ? 'Pošiljanje...' : 'Pošlji sporočilo'}
-                     </Button>
-                  </form>
-               )}
+                        <option value="Splošno">Splošno povpraševanje</option>
+                        <option value="Showroom">Rezervacija termina (Showroom)</option>
+                        <option value="Perfect Fit">Perfect Fit svetovanje</option>
+                     </select>
+                  </div>
+                  <div className="space-y-2">
+                     <label htmlFor="message" className="text-sm font-medium">Sporočilo</label>
+                     <textarea 
+                        name="message"
+                        id="message" 
+                        required 
+                        rows={5}
+                        className="w-full p-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all resize-none"
+                        placeholder="Tvoje sporočilo..."
+                     />
+                  </div>
+                  
+                  {formState === 'error' && (
+                    <div className="p-3 bg-red-50 text-red-600 text-sm rounded-sm">
+                      Prišlo je do napake. Prosimo, poskusite ponovno.
+                    </div>
+                  )}
+
+                  <Button 
+                     type="submit" 
+                     variant="primary" 
+                     className="w-full"
+                     disabled={formState === 'submitting'}
+                  >
+                     {formState === 'submitting' ? 'Pošiljanje...' : 'Pošlji sporočilo'}
+                  </Button>
+               </form>
             </div>
           </div>
         </Section>
