@@ -11,14 +11,14 @@ import { useBooking } from '@/components/booking/BookingContext';
 export default function CollectionsContent() {
   const { openBooking } = useBooking();
   const collections = [
-    { id: 'ss22-dolce-vita', title: 'SS22 Dolce Vita', season: 'Pomlad/Poletje', year: '2022', image: 'Dolce_Vita___122_wsk6ub' },
-    { id: 'fw22-teatro', title: 'FW22 Teatro', season: 'Jesen/Zima', year: '2022', image: 'Teatro_lookbook_103_pvu6bb' },
-    { id: 'ss23-bon-voyage', title: 'SS23 Bon Voyage', season: 'Pomlad/Poletje', year: '2023', image: 'BonVoyage_Lookbook__49_azbqhx' },
+    { id: 'ss22-dolce-vita', title: 'SS22 Dolce Vita', season: 'Pomlad/Poletje', year: '2022', image: 'obleka_Eukaliptus_6_turdla' },
+    { id: 'fw22-teatro', title: 'FW22 Teatro', season: 'Jesen/Zima', year: '2022', image: 'Bluza_nesimetrična_5_x0gs5p' },
+    { id: 'ss23-bon-voyage', title: 'SS23 Bon Voyage', season: 'Pomlad/Poletje', year: '2023', image: 'Čipkasta_bluza_1_o68rbx' },
     { id: 'fw23-new-elegance', title: 'FW23 New Elegance', season: 'Jesen/Zima', year: '2023', image: 'Hlače_Enita_pepita_gube_široke_hlačnice_zavihek_na_dolžini_4_vyhiu8' },
-    { id: 'ss24-couture-collective', title: 'SS24 Couture Collective', season: 'Pomlad/Poletje', year: '2024', image: 'Bianca_bela_bluza_print_detajli_rože_18_l80ggm' },
-    { id: 'fw24-heartstrings', title: 'FW24 Heartstrings Of Passion', season: 'Jesen/Zima', year: '2024', image: 'HeartstringsOfPassion__2_qjedlh' },
-    { id: 'ss25-voyage-blanc', title: 'SS25 Voyage Blanc', season: 'Pomlad/Poletje', year: '2025', image: '10_Vijola_obleka_2_goidcs' },
-    { id: 'fw25-symphonia', title: 'FW25 Symphonia', season: 'Jesen/Zima', year: '2025', image: 'Obleka_Ajda_6_nka2k4', featured: true },
+    { id: 'ss24-couture-collective', title: 'SS24 Couture Collective', season: 'Pomlad/Poletje', year: '2024', image: 'Adele_bluza_bela_unikaten_print_rože_gumbi_iz_školjk_6_fbosnr' },
+    { id: 'fw24-heartstrings', title: 'FW24 Heartstrings Of Passion', season: 'Jesen/Zima', year: '2024', image: 'HeartstringsOfPassion__18_jzs2lz' },
+    { id: 'ss25-voyage-blanc', title: 'SS25 Voyage Blanc', season: 'Pomlad/Poletje', year: '2025', image: '04_belo_krilo_in_bluza_4_kylrrk' },
+    { id: 'fw25-symphonia', title: 'FW25 Symphonia', season: 'Jesen/Zima', year: '2025', image: 'Suknjič_Lidija_4_lml22c', featured: true },
     { id: 'dreamscape', title: 'Dreamscape', season: 'Special Couture', year: 'Couture', image: '_P0A5393_oxlnyf' },
   ];
 
