@@ -106,14 +106,14 @@ const collections:  Record<string, {
     season: 'Jesen/Zima',
     year: '2023',
     tagline: 'Sofisticirane silhuete. Teksturni kontrasti.',
-    cloudinaryFolder: 'Patricia Pie/Collections/New Elegance',
+    cloudinaryFolder: 'Patricia Pie/Collections/New Elegance FW23', // Updated to avoid old folder; utilizing manual list below
     description: [
       'Kolekcija pooseblja eleganco in trajnost v vsakem šivu. Ročno izdelani kosi iz našega ateljeja združujejo klasične silhuete z inovativnimi detajli, ustvarjeni za sodobno poslovno žensko.',
       'Natančno krojenje, trajnostni materiali in brezčasni dizajn zagotavljajo, da bo vsak kos izjemna investicija v vašo profesionalno garderobo. Sofisticirane silhuete, teksturni kontrasti in strukturirani detajli so rdeča nit te kolekcije.'
     ],
     images: {
-      hero: ['Hlače_Enita_pepita_gube_široke_hlačnice_zavihek_na_dolžini_4_vyhiu8'],
-      looks: ['Hlače_Enita_pepita_gube_široke_hlačnice_zavihek_na_dolžini_4_vyhiu8']
+      hero: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv'],
+      looks: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv']
     },
     perfectFitAvailable: true
   },
