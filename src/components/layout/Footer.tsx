@@ -27,7 +27,7 @@ export default function Footer() {
 
           {/* Links Column */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg font-semibold">Razišči svet Pie</h4>
+            <h3 className="font-heading text-lg font-semibold">Razišči svet Pie</h3>
             <nav className="flex flex-col space-y-2 text-sm text-muted-foreground/80">
               <Link href="/kolekcije" className="hover:text-tertiary transition-colors w-fit">Kolekcije</Link>
               <Link href="/perfect-fit" className="hover:text-tertiary transition-colors w-fit">Perfect Fit</Link>
@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg font-semibold">Kontakt</h4>
+            <h3 className="font-heading text-lg font-semibold">Kontakt</h3>
             <ul className="space-y-3 text-sm text-muted-foreground/80">
               <li className="flex flex-col">
                 <span className="font-medium text-foreground">Showroom</span>
@@ -64,7 +64,7 @@ export default function Footer() {
             <FooterNewsletter />
             
             <div className="space-y-3">
-              <h4 className="text-sm font-medium">Spremljaj nas</h4>
+              <h3 className="text-sm font-medium">Spremljaj nas</h3>
               <div className="flex space-x-4 text-muted-foreground">
                 <a href="https://www.instagram.com/patricia_pie/" target="_blank" rel="noopener noreferrer" className="hover:text-tertiary transition-colors">
                   <Instagram className="h-5 w-5" />

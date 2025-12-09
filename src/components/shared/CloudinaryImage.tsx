@@ -52,9 +52,12 @@ export default function CloudinaryImage({
         className={cn(
           'duration-700 ease-in-out',
           fill && 'object-cover',
-          isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
+          // Skip blur effect for priority images to improve LCP
+          !props.priority && isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
           className
         )}
+        // Explicitly pass fetchPriority if it's a priority image or prop is present
+        fetchPriority={props.priority ? 'high' : props.fetchPriority}
         onLoad={() => setIsLoading(false)}
         {...props}
       />

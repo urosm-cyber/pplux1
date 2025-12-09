@@ -21,10 +21,10 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.patriciapie.si'),
   title: {
-    default: "Patricia Pie | Boutique Couture House",
+    default: "Patricia Pie — Slovensko oblikovanje, Perfect Fit",
     template: "%s | Patricia Pie"
   },
-  description: "Slovenian boutique couture brand offering Perfect Fit services and timeless elegance.",
+  description: "Oblačila, ki vas razumejo. Patricia Pie ponuja storitev Perfect Fit, osebni pristop in brezčasno eleganco. Trajnostno slovensko oblikovanje za vašo garderobo.",
   openGraph: {
     type: 'website',
     locale: 'sl_SI',
@@ -41,8 +41,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Patricia Pie | Boutique Couture House',
-    description: 'Slovenian boutique couture brand offering Perfect Fit services and timeless elegance.',
+    title: 'Patricia Pie — Slovensko oblikovanje, Perfect Fit',
+    description: 'Oblačila, ki vas razumejo. Patricia Pie ponuja storitev Perfect Fit, osebni pristop in brezčasno eleganco. Trajnostno slovensko oblikovanje za vašo garderobo.',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -60,7 +65,50 @@ export default function RootLayout({
         <BookingProvider>
           {children}
           <CookieConsent />
-        </BookingProvider> 
+        </BookingProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ClothingStore",
+              "name": "Patricia Pie",
+              "image": "https://www.patriciapie.si/images/showroom-s7.png",
+              "description": "Slovenska modna hiša, kjer se eleganca sreča z udobjem. Kroji, ki te razumejo, osebni pristop in brezčasen dizajn.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Stegne 7",
+                "addressLocality": "Ljubljana",
+                "postalCode": "1000",
+                "addressCountry": "SI"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 46.0804,
+                "longitude": 14.4867
+              },
+              "url": "https://www.patriciapie.si",
+              "telephone": "+38641988384",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              },
+              "sameAs": [
+                "https://www.instagram.com/patricia_pie/",
+                "https://www.facebook.com/PatriciaPieFashion",
+                "https://www.linkedin.com/in/barbara-franjic/"
+              ]
+            })
+          }}
+        /> 
       </body>
     </html>
   );

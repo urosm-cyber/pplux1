@@ -51,14 +51,14 @@ export default function Header() {
             Showroom
           </Link>
           <Link href="/o-znamki" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
-            O Znamki
+            Zgodba
           </Link>
           <Link href="/zapiski" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
             Zapiski
           </Link>
           <Link href="/kontakt">
             <Button variant={isScrolled ? 'primary' : 'outline'} size="sm" className={!isScrolled ? 'border-white text-white hover:bg-white hover:text-black' : ''}>
-              Piši nam
+              Kontakt
             </Button>
           </Link>
         </nav>
