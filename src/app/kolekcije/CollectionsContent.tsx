@@ -18,7 +18,7 @@ export default function CollectionsContent() {
     { id: 'ss24-couture-collective', title: 'SS24 Couture Collective', season: 'Pomlad/Poletje', year: '2024', image: 'Bianca_bela_bluza_print_detajli_rože_18_l80ggm' },
     { id: 'fw24-heartstrings', title: 'FW24 Heartstrings Of Passion', season: 'Jesen/Zima', year: '2024', image: 'HeartstringsOfPassion__2_qjedlh' },
     { id: 'ss25-voyage-blanc', title: 'SS25 Voyage Blanc', season: 'Pomlad/Poletje', year: '2025', image: '10_Vijola_obleka_2_goidcs' },
-    { id: 'fw25-symphonia', title: 'FW25 Symphonia', season: 'Jesen/Zima', year: '2025', image: 'Patricia Pie/Collections/Symphonia/Hlače_Ana_5_et4xcm', featured: true },
+    { id: 'fw25-symphonia', title: 'FW25 Symphonia', season: 'Jesen/Zima', year: '2025', image: 'Obleka_Ajda_6_nka2k4', featured: true },
     { id: 'dreamscape', title: 'Dreamscape', season: 'Special Couture', year: 'Couture', image: '_P0A5393_oxlnyf' },
   ];
 
