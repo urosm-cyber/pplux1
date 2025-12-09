@@ -113,7 +113,14 @@ const collections:  Record<string, {
     ],
     images: {
       hero: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv'],
-      looks: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv']
+      looks: [
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_2_wyflml',
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_4_gvxxwa',
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv',
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_7_eyc8mk',
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_8_qdwodm',
+        'Bomber_Jakna_in_krilo_Elena_New_Elegance_9_hu9fwz'
+      ]
     },
     perfectFitAvailable: true
   },

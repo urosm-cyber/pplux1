@@ -27,8 +27,8 @@ export const journalPosts: BlogPost[] = [
       </ul>
       <p>Začni z osnovami. Dobre krojene hlače so tvoj platno. Dodaj jim svileno bluzo za eleganco ali pletenino za udobje. Nadgradi s plaščem, ki te bo objel kot druga koža.</p>
     `,
-    image: "Patricia Pie/Collections/Symphonia/Symphonia_209_gasqsx",
-    date: "14. november 2024",
+    image: "Obleka_Ajda_6_nka2k4",
+    date: "8. december 2025",
     category: "Styling"
   },
   {
@@ -49,7 +49,7 @@ export const journalPosts: BlogPost[] = [
       <p>To ni le nakup. Je naložba v tvoje dobro počutje.</p>
     `,
     image: "HeartstringsOfPassion__13_cqrkyk",
-    date: "28. oktober 2024",
+    date: "5. december 2025",
     category: "Doživetje"
   },
   {
@@ -66,7 +66,7 @@ export const journalPosts: BlogPost[] = [
       <p>Rezerviraj svoj termin in si vzemi uro časa samo zase.</p>
     `,
     image: "HeartstringsOfPassion__26_tg99tm",
-    date: "15. november 2024",
+    date: "3. december 2025",
     category: "Doživetje"
   },
   {
@@ -87,7 +87,7 @@ export const journalPosts: BlogPost[] = [
       <p>Ko nosiš Patricia Pie, ne nosiš le oblačila. Nosiš ure in ure predanega dela, znanja in ljubezni naše majhne ekipe.</p>
     `,
     image: "Bluza_Pia_1_qelzxb",
-    date: "2. november 2024",
+    date: "1. december 2025",
     category: "Iz Ateljeja"
   },
   {
@@ -102,8 +102,8 @@ export const journalPosts: BlogPost[] = [
       <p>Kroji so zasnovani tako, da dopuščajo gibanje, a hkrati poudarijo žensko silhueto. Plašči s poudarjenim pasom, hlače z visokim pasom in bluze z zanimivimi detajli na rokavih.</p>
       <p>To je kolekcija za žensko, ki svojo moč črpa iz elegancije in udobja.</p>
     `,
-    image: "Patricia Pie/Collections/Symphonia/Symphonia_190_xchxis",
-    date: "15. oktober 2024",
+    image: "Suknjič_Lidija_4_lml22c",
+    date: "10. december 2025",
     category: "Kolekcije"
   }
 ];
