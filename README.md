@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+> **Developer Note**: Please read [PROJECT_STATUS.md](./PROJECT_STATUS.md) for current workflow, branching strategy (`dev` vs `main`), and infrastructure details before making changes.
+
 First, run the development server:
 
 ```bash

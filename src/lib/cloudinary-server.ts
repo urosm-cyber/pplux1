@@ -57,8 +57,8 @@ export const getCollectionImages = cache(async (folderName: string): Promise<Ima
       },
       body: JSON.stringify(query),
       // Cache for 1 hour (3600 seconds)
-      // Disable cache strictly for debugging/immediate consistency
-      next: { revalidate: 0 } 
+      // Cache for 1 hour (3600 seconds)
+      next: { revalidate: 3600 } 
     });
 
     if (!response.ok) {
