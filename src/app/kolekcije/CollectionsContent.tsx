@@ -15,7 +15,7 @@ export default function CollectionsContent() {
     { id: 'ss25-voyage-blanc', title: 'SS25 Voyage Blanc', season: 'Pomlad/Poletje', year: '2025', image: '04_belo_krilo_in_bluza_4_kylrrk' },
     { id: 'fw24-heartstrings', title: 'FW24 Heartstrings Of Passion', season: 'Jesen/Zima', year: '2024', image: 'HeartstringsOfPassion__18_jzs2lz' },
     { id: 'ss24-couture-collective', title: 'SS24 Couture Collective', season: 'Pomlad/Poletje', year: '2024', image: 'Adele_bluza_bela_unikaten_print_rože_gumbi_iz_školjk_6_fbosnr' },
-    { id: 'fw23-new-elegance', title: 'FW23 New Elegance', season: 'Jesen/Zima', year: '2023', image: 'Hlače_Enita_pepita_gube_široke_hlačnice_zavihek_na_dolžini_4_vyhiu8' },
+    { id: 'fw23-new-elegance', title: 'FW23 New Elegance', season: 'Jesen/Zima', year: '2023', image: 'Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv' },
     { id: 'ss23-bon-voyage', title: 'SS23 Bon Voyage', season: 'Pomlad/Poletje', year: '2023', image: 'Čipkasta_bluza_1_o68rbx' },
     { id: 'fw22-teatro', title: 'FW22 Teatro', season: 'Jesen/Zima', year: '2022', image: 'Bluza_nesimetrična_5_x0gs5p' },
     { id: 'ss22-dolce-vita', title: 'SS22 Dolce Vita', season: 'Pomlad/Poletje', year: '2022', image: 'obleka_Eukaliptus_6_turdla' },
