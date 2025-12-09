@@ -106,24 +106,18 @@ const collections:  Record<string, {
     season: 'Jesen/Zima',
     year: '2023',
     tagline: 'Sofisticirane silhuete. Teksturni kontrasti.',
-    cloudinaryFolder: 'Patricia Pie/Collections/New Elegance FW23', // Updated to avoid old folder; utilizing manual list below
+    cloudinaryFolder: 'Patricia Pie/Collections/New Elegance',
     description: [
       'Kolekcija pooseblja eleganco in trajnost v vsakem šivu. Ročno izdelani kosi iz našega ateljeja združujejo klasične silhuete z inovativnimi detajli, ustvarjeni za sodobno poslovno žensko.',
       'Natančno krojenje, trajnostni materiali in brezčasni dizajn zagotavljajo, da bo vsak kos izjemna investicija v vašo profesionalno garderobo. Sofisticirane silhuete, teksturni kontrasti in strukturirani detajli so rdeča nit te kolekcije.'
     ],
     images: {
       hero: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv'],
-      looks: [
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_2_wyflml',
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_4_gvxxwa',
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv',
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_7_eyc8mk',
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_8_qdwodm',
-        'Bomber_Jakna_in_krilo_Elena_New_Elegance_9_hu9fwz'
-      ]
+      looks: ['Bomber_Jakna_in_krilo_Elena_New_Elegance_6_gdtdiv']
     },
     perfectFitAvailable: true
   },
+
   'ss23-bon-voyage': {
     id: 'ss23-bon-voyage',
     title: 'SS23 Bon Voyage',
