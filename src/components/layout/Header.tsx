@@ -40,7 +40,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className={`hidden md:flex items-center gap-8 ${isScrolled ? 'text-foreground' : 'text-white'}`}>
+        <nav className={`hidden md:flex items-center gap-8 transition-colors duration-300 ${isScrolled ? 'text-foreground' : 'text-white'}`}>
           <Link href="/kolekcije" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
             Kolekcije
           </Link>
