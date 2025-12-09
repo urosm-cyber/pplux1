@@ -64,8 +64,8 @@ export default function Home() {
           {/* Collection Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { id: 'look-1', title: 'Symphonia Look 01', image: 'collections/Symphonia/Symphonia_209_gasqsx' },
-              { id: 'look-2', title: 'Symphonia Look 02', image: 'collections/Symphonia/Symphonia_190_xchxis' },
+              { id: 'look-1', title: 'Symphonia Look 01', image: 'Patricia Pie/Collections/Symphonia/Hlače_Ana_5_et4xcm' },
+              { id: 'look-2', title: 'Symphonia Look 02', image: 'Patricia Pie/Collections/Symphonia/Hlače_Ana_6_gonadx' },
               { id: 'look-3', title: 'Symphonia Look 03', image: 'Bluza_Karo_biseri_3_ljbdr5' }
             ].map((item) => (
               <Link key={item.id} href="/kolekcije/fw25-symphonia" className="group block">

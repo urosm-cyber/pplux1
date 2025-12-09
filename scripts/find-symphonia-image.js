@@ -8,7 +8,7 @@ cloudinary.config({
 
 async function run() {
     try {
-        const folder = 'Patricia Pie/Collections/Symphonia';
+        const folder = 'collections/Symphonia';
         console.log(`--- Listing images in "${folder}" ---`);
         
         const result = await cloudinary.search

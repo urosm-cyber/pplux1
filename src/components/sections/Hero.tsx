@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <CloudinaryImage
-          src="collections/Symphonia/Symphonia_190_xchxis"
+          src="Patricia Pie/Collections/Symphonia/Hlače_Karo_črte_1_z9euyl"
           alt="Patricia Pie Couture - Symphonia kolekcija"
           fill
           className="object-cover"
