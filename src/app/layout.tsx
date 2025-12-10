@@ -44,11 +44,7 @@ export const metadata: Metadata = {
     title: 'Patricia Pie — Slovensko oblikovanje, Perfect Fit',
     description: 'Oblačila, ki vas razumejo. Patricia Pie ponuja storitev Perfect Fit, osebni pristop in brezčasno eleganco. Trajnostno slovensko oblikovanje za vašo garderobo.',
   },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
+  
 };
 
 export default function RootLayout({
