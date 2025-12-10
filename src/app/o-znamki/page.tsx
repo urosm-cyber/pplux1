@@ -168,7 +168,7 @@ export default function AboutPage() {
                        <Crown strokeWidth={1} size={36} />
                     </div>
                     <div className="space-y-3">
-                       <h3 className="font-heading text-xl font-semibold text-foreground uppercase tracking-wider">Ženskost & Samozavest</h3>
+                       <h3 className="font-heading text-xl font-semibold text-foreground uppercase tracking-wider">Ženstvenost in samozavest</h3>
                        <div className="w-8 h-px bg-tertiary mx-auto opacity-50"></div>
                        <p className="text-sm text-warm-gray leading-relaxed font-light">
                           Vsak kos je oblikovan tako, da podpira vašo prezenco in poudari vašo notranjo moč.
