@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalyticsManager from "@/components/analytics/GoogleAnalyticsManager";
 import { BookingProvider } from "@/components/booking/BookingContext";
 import CookieConsent from "@/components/layout/CookieConsent";
@@ -63,6 +64,7 @@ export default function RootLayout({
         <BookingProvider>
           {children}
           <Analytics />
+          <SpeedInsights />
           <CookieConsent />
         </BookingProvider>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
