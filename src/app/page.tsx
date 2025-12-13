@@ -184,7 +184,7 @@ export default function Home() {
                   &quot;Prvič v življenju imam hlače, ki mi popolnoma sedijo. Barbara je razumela točno, kaj potrebujem, še preden sem znala povedati.&quot;
                 </p>
                 <div className="text-sm text-muted-foreground">
-                  <span className="font-bold text-foreground block">Katja Novak</span>
+                  <span className="font-bold text-foreground block">Katja</span>
                   odvetnica, Ljubljana
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function Home() {
                   &quot;Oblačila, ki niso le lepa, ampak se v njih počutim močno. Perfect Fit je res vreden vsakega evra.&quot;
                 </p>
                 <div className="text-sm text-muted-foreground">
-                  <span className="font-bold text-foreground block">Ana Kovač</span>
+                  <span className="font-bold text-foreground block">Ana</span>
                   podjetnica, Maribor
                 </div>
               </div>
