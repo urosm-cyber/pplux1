@@ -180,21 +180,21 @@ export default function Home() {
             <Heading size="lg" className="mb-12">Mnenja strank</Heading>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-4">
-                <p className="text-lg italic font-heading text-foreground/80">
+                <p className="text-lg italic font-heading text-foreground/80 leading-relaxed">
                   &quot;Prvič v življenju imam hlače, ki mi popolnoma sedijo. Barbara je razumela točno, kaj potrebujem, še preden sem znala povedati.&quot;
                 </p>
-                <div className="text-sm text-muted-foreground">
-                  <span className="font-bold text-foreground block">Katja</span>
-                  odvetnica, Ljubljana
+                <div className="text-sm text-muted-foreground pt-2">
+                  <span className="font-medium text-foreground block">— Katja</span>
+                  <span className="font-light tracking-wide">odvetnica, Ljubljana</span>
                 </div>
               </div>
               <div className="space-y-4">
-                <p className="text-lg italic font-heading text-foreground/80">
+                <p className="text-lg italic font-heading text-foreground/80 leading-relaxed">
                   &quot;Oblačila, ki niso le lepa, ampak se v njih počutim močno. Perfect Fit je res vreden vsakega evra.&quot;
                 </p>
-                <div className="text-sm text-muted-foreground">
-                  <span className="font-bold text-foreground block">Ana</span>
-                  podjetnica, Maribor
+                <div className="text-sm text-muted-foreground pt-2">
+                  <span className="font-medium text-foreground block">— Ana</span>
+                  <span className="font-light tracking-wide">podjetnica, Maribor</span>
                 </div>
               </div>
             </div>
