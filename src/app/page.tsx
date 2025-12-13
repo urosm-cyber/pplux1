@@ -28,7 +28,7 @@ export default function Home() {
             <div className="hidden md:block w-px h-12 bg-tertiary/30" />
             <div className="space-y-1">
               <span className="block font-heading text-2xl text-foreground">100%</span>
-              <span className="text-sm text-muted-foreground uppercase tracking-wider">Slovensko oblikovanje</span>
+              <span className="text-sm text-muted-foreground uppercase tracking-wider">Slovensko oblikovanje in izdelava</span>
             </div>
             <div className="hidden md:block w-px h-12 bg-tertiary/30" />
             <div className="space-y-1">

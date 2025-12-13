@@ -197,6 +197,7 @@ The website should feel like entering the S7 showroom — warm welcome, curated 
 `Logo [center or left]
 
 Primary Nav:
+
 - Kolekcija
 - Perfect Fit
 - Showroom
@@ -204,6 +205,7 @@ Primary Nav:
 - Journal
 
 Utility:
+
 - Kontakt
 - [Language switcher - later for EU]
 
@@ -240,37 +242,44 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
 **Structure:**
 
 `1. HERO SECTION
-   - Atmospheric image (showroom or styled woman)
-   - Headline: Emotional, confidence-focused
-   - Subhead: One line about Perfect Fit or showroom
-   - CTA: "Rezerviraj termin" (primary)
-   
+
+- Atmospheric image (showroom or styled woman)
+- Headline: Emotional, confidence-focused
+- Subhead: One line about Perfect Fit or showroom
+- CTA: "Rezerviraj termin" (primary)
+
 2. SOCIAL PROOF BAR
-   - "7 let na Ljubljana Fashion Week"
+
+   - "8 let na Ljubljana Fashion Week"
    - "100% slovensko oblikovanje in izdelava"
    - Or: rotating client testimonial snippet
 
 3. WHAT'S NEW / NAJNOVEJŠE
+
    - 3-4 latest pieces or current collection highlight
    - Not full catalog — curated tease
    - Link: "Poglej kolekcijo"
 
 4. PERFECT FIT INTRO
+
    - Brief value prop (2-3 sentences max)
    - Visual: before/after or process glimpse
    - CTA: "Kako deluje Perfect Fit"
 
 5. SHOWROOM INVITE
+
    - Warm photo of S7 interior
    - Copy: Inviting, low-barrier ("Pridi na kavo...")
    - CTA: "Rezerviraj obisk"
 
 6. TESTIMONIAL / SOCIAL PROOF
+
    - 1-2 real Slovenian women
    - Name, profession, location
    - Short quote about experience
 
 7. JOURNAL PREVIEW (optional)
+
    - Latest 2 posts
    - Styling tips, atelier stories
 
@@ -295,41 +304,48 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
 **Structure:**
 
 `1. HERO
-   - Headline: "Perfect Fit — Popolna mera, narejena za vas"
-   - Subhead: Value prop in one sentence
-   
+
+- Headline: "Perfect Fit — Popolna mera, narejena za vas"
+- Subhead: Value prop in one sentence
+
 2. WHAT IS IT (brief)
+
    - 2-3 sentences max — don't over-explain
    - "Oblačilo, prilagojeno vašemu telesu in življenju"
 
 3. PROCESS VISUAL (key section)
+
    - 3-step timeline, visual + text:
-   
+
    ① Osebni posvet (30-60 min)
-      Pogovor o vašem stilu, življenju, željah
-      
+   Pogovor o vašem stilu, življenju, željah
+
    ② Izdelava (5-10 dni)
-      Kos nastaja v našem ateljeju
-      
+   Kos nastaja v našem ateljeju
+
    ③ Končna примерка
-      Fina prilagoditev, popoln fit
-   
+   Fina prilagoditev, popoln fit
+
 4. WHY IT MATTERS
+
    - Benefits focused on Maja's pain points:
      - "Končno hlače, ki res sedijo"
      - "Kos, ki ga boste nosili leta"
      - "Vaše mere shranjene za prihodnost"
 
 5. PRICE TRANSPARENCY
+
    - "Perfect Fit prilagoditev: od €XX"
    - Or: "Prilagoditev vključena pri kosih nad €XX"
    - Clear, no surprises
 
 6. TESTIMONIAL
+
    - Specific to Perfect Fit experience
    - Real name, real result
 
 7. CTA SECTION
+
    - "Želite izkusiti Perfect Fit?"
    - Button: "Rezerviraj termin"
 
@@ -348,25 +364,23 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
 **Structure:**
 
 `1. HERO
-   - Beautiful S7 interior photo
-   - Headline: "Showroom S7 — Vaš osebni modni salon"
-   
+
+- Beautiful S7 interior photo
+- Headline: "Showroom S7 — Vaš osebni modni salon"
+
 2. ATMOSPHERE DESCRIPTION
    - 3-4 sentences painting the experience
    - Mention: kava, pogovor, brez naglice, osebna pozornost
-   
 3. GALLERY
    - 4-6 images showing:
      - Interior details
      - Fitting moment
      - Garments on rack
      - Coffee/prosecco detail
-     
 4. PRACTICAL INFO
    - Naslov: Stegne 7, Ljubljana (with map)
    - Parkiranje / dostop z javnim prevozom
    - "Samo po predhodni rezervaciji"
-   
 5. WHAT TO EXPECT
    - Simple list or short paragraphs:
      - Dobrodošlica in pijača
@@ -374,8 +388,8 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
      - Ogled in примерка izbranih kosov
      - Možnost Perfect Fit naročila
      - Brez obveznosti nakupa
-     
 6. BOOKING CTA (prominent)
+
    - "Rezervirajte svoj termin"
    - Calendar widget or simple form
    - Response time promise: "Odgovorimo v 24 urah"
@@ -401,22 +415,26 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
 **Structure:**
 
 `1. HERO
-   - Barbara portrait or atelier scene
-   - Headline: "Zgodba Patricia Pie"
+
+- Barbara portrait or atelier scene
+- Headline: "Zgodba Patricia Pie"
 
 2. ORIGIN STORY
+
    - Barbara's journey (condensed)
    - Why she started
    - The name meaning (Patricia + Pie philosophy)
    - Keep it personal, not corporate
 
 3. PIE PHILOSOPHY (visual section)
+
    - The wardrobe-building concept
    - Visual metaphor if possible
    - "Vsak kos je sestavina vaše popolne garderobe"
    - Connection across seasons
 
 4. VALUES
+
    - Visual icons or simple list:
      - Ženstvenost & samozavest
      - Rokodelska odličnost
@@ -425,12 +443,14 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
      - Slovensko srce, evropska vizija
 
 5. ATELIER SECTION
+
    - Photos of Gornja Radgona workshop
    - The team (if comfortable sharing)
    - Emphasize: slovensko, ročno, majhna ekipa
    - "Tukaj nastajajo vaša oblačila"
 
 6. TIMELINE / MILESTONES (optional)
+
    - 2014: Ustanovitev
    - Ljubljana Fashion Week leta
    - Showroom odprtje
@@ -449,15 +469,18 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
 **Structure:**
 
 `1. HERO
-   - Current collection name/season
-   - Atmospheric collection photo
-   
+
+- Current collection name/season
+- Atmospheric collection photo
+
 2. FILTER/NAVIGATION
+
    - By category: Obleke | Krila | Hlače | Bluze | Plašči | Dodatki
    - By occasion: Služba | Večer | Posebni trenutki | Vsakdan
    - Keep simple — not 20 filter options
 
 3. PRODUCT GRID
+
    - Clean, airy grid (not cramped)
    - Hover: second image or quick view
    - Show: name, price, "Perfect Fit možnost" badge if applicable
@@ -470,7 +493,6 @@ Any page → Sticky "Rezerviraj termin" button → Modal/page → Done`
    - "Kako kombinirati" — suggest 2-3 complementary pieces
    - Size note: "Perfect Fit prilagoditev možna"
    - CTA: "Povpraševanje" or "Rezerviraj примерко"
-   
 5. NO CART/CHECKOUT
    - This is not e-commerce
    - All purchases through inquiry or showroom
@@ -610,21 +632,21 @@ Hitra dostava (not the point)`
 ### Types of Proof (priority order)
 
 1. **Real Customer Testimonials**
-    - Name, profession, city
-    - Specific about experience
-    - Photo if possible (wearing piece or portrait)
+   - Name, profession, city
+   - Specific about experience
+   - Photo if possible (wearing piece or portrait)
 2. **Ljubljana Fashion Week**
-    - "7 zaporednih let na LFW"
-    - Photos from shows
-    - Press mentions
+   - "8 zaporednih let na LFW"
+   - Photos from shows
+   - Press mentions
 3. **Numbers**
-    - "10+ let izkušenj"
-    - "100% slovenska izdelava"
-    - Avoid vanity metrics
+   - "10+ let izkušenj"
+   - "100% slovenska izdelava"
+   - Avoid vanity metrics
 4. **Process Transparency**
-    - Atelier photos
-    - Making-of content
-    - Barbara's involvement visible
+   - Atelier photos
+   - Making-of content
+   - Barbara's involvement visible
 
 ### Testimonial Format
 
@@ -695,27 +717,27 @@ Mobile PageSpeed Score: > 85`
 
 ### Must-Have Components
 
-- [ ]  Hero section (image + headline + CTA)
-- [ ]  Navigation (desktop + mobile)
-- [ ]  Product card (image, name, price, badge)
-- [ ]  Product gallery (main + thumbnails)
-- [ ]  Testimonial card
-- [ ]  Process timeline (3 steps)
-- [ ]  CTA section (full-width)
-- [ ]  Booking form
-- [ ]  Contact form
-- [ ]  Footer
-- [ ]  Journal post card
-- [ ]  Journal post template
-- [ ]  FAQ accordion
-- [ ]  Image gallery (lightbox)
+- [ ] Hero section (image + headline + CTA)
+- [ ] Navigation (desktop + mobile)
+- [ ] Product card (image, name, price, badge)
+- [ ] Product gallery (main + thumbnails)
+- [ ] Testimonial card
+- [ ] Process timeline (3 steps)
+- [ ] CTA section (full-width)
+- [ ] Booking form
+- [ ] Contact form
+- [ ] Footer
+- [ ] Journal post card
+- [ ] Journal post template
+- [ ] FAQ accordion
+- [ ] Image gallery (lightbox)
 
 ### Nice-to-Have
 
-- [ ]  "Kako kombinirati" carousel
-- [ ]  Newsletter signup modal
-- [ ]  Floating "Rezerviraj" button (mobile)
-- [ ]  Instagram feed embed
+- [ ] "Kako kombinirati" carousel
+- [ ] Newsletter signup modal
+- [ ] Floating "Rezerviraj" button (mobile)
+- [ ] Instagram feed embed
 
 ---
 
@@ -723,24 +745,24 @@ Mobile PageSpeed Score: > 85`
 
 **Before launch:**
 
-- [ ]  All pages responsive tested
-- [ ]  Forms working + notifications set
-- [ ]  Images optimized via Cloudinary
-- [ ]  SEO meta for all pages
-- [ ]  Analytics installed (Plausible or similar)
-- [ ]  404 page designed
-- [ ]  Favicon + OG images
-- [ ]  Contact info accurate
-- [ ]  Legal pages (Pogoji, Zasebnost)
+- [ ] All pages responsive tested
+- [ ] Forms working + notifications set
+- [ ] Images optimized via Cloudinary
+- [ ] SEO meta for all pages
+- [ ] Analytics installed (Plausible or similar)
+- [ ] 404 page designed
+- [ ] Favicon + OG images
+- [ ] Contact info accurate
+- [ ] Legal pages (Pogoji, Zasebnost)
 
 **Content ready:**
 
-- [ ]  All copy reviewed for tone
-- [ ]  6+ product photos minimum
-- [ ]  4+ showroom photos
-- [ ]  3+ atelier photos
-- [ ]  2+ testimonials ready
-- [ ]  Barbara portrait
+- [ ] All copy reviewed for tone
+- [ ] 6+ product photos minimum
+- [ ] 4+ showroom photos
+- [ ] 3+ atelier photos
+- [ ] 2+ testimonials ready
+- [ ] Barbara portrait
 
 ---
 
@@ -758,4 +780,4 @@ Everything else supports these three.
 
 ---
 
-*Document version: 1.0Created: December 2024For: Patricia Pie Slovenian market website*
+_Document version: 1.0Created: December 2024For: Patricia Pie Slovenian market website_
