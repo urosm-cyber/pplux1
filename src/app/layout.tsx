@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import GoogleAnalyticsManager from "@/components/analytics/GoogleAnalyticsManager";
 import { BookingProvider } from "@/components/booking/BookingContext";
 import CookieConsent from "@/components/layout/CookieConsent";
 import "./globals.css";
@@ -62,6 +63,9 @@ export default function RootLayout({
           {children}
           <CookieConsent />
         </BookingProvider>
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
+          <GoogleAnalyticsManager gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

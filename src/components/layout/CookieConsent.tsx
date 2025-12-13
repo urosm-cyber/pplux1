@@ -20,13 +20,14 @@ export default function CookieConsent() {
   const handleAcceptAll = () => {
     localStorage.setItem('cookie-consent', 'accepted');
     setIsVisible(false);
-    // Here you would trigger GA initialization if you had it
-    // window.dispatchEvent(new Event('cookie-consent-accepted'));
+    // Trigger GA initialization
+    window.dispatchEvent(new Event('cookie-consent-updated'));
   };
 
   const handleRejectAll = () => {
     localStorage.setItem('cookie-consent', 'rejected');
     setIsVisible(false);
+    window.dispatchEvent(new Event('cookie-consent-updated'));
   };
 
   if (!isVisible) return null;
