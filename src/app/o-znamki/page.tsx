@@ -301,15 +301,23 @@ export default function AboutPage() {
            <div className="container mx-auto px-4 max-w-2xl">
               <Heading size="lg" className="mb-6">Spoznajte nas osebno</Heading>
               <p className="text-lg text-warm-gray mb-10 leading-relaxed">
-                 Najboljši način, da začutite filozofijo Patricia Pie, je obisk našega showrooma. 
+                 Najboljši način, da začutite filozofijo Patricia Pie, je obisk — v showroomu, ateljeju ali pri naših partnericah.
                  Pridite na kavo, pogovor in pomerjanje – brez obveznosti.
               </p>
-              <Link 
-                 href="/showroom" 
-                 className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-tertiary transition-colors duration-300"
-              >
-                 Rezerviraj Termin
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                   href="/kontakt"
+                   className="inline-block bg-foreground text-background px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-tertiary transition-colors duration-300"
+                >
+                   Rezerviraj Termin
+                </Link>
+                <Link
+                   href="/kontakt"
+                   className="inline-block border border-foreground px-8 py-4 uppercase tracking-widest text-sm font-medium hover:bg-foreground hover:text-background transition-colors duration-300"
+                >
+                   Vse lokacije
+                </Link>
+              </div>
            </div>
         </Section>
       </main>

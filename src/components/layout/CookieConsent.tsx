@@ -33,7 +33,7 @@ export default function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 bg-background border-t border-secondary/20 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] animate-in slide-in-from-bottom duration-500">
+    <div className="fixed bottom-0 left-0 right-0 z-40 p-4 md:p-6 bg-background border-t border-secondary/20 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] animate-in slide-in-from-bottom duration-500">
       <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
         
         {/* Text Content */}

@@ -56,7 +56,7 @@ export default function GarmentInquiryModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
           >
             {/* Modal Content */}
             <motion.div
@@ -69,6 +69,7 @@ export default function GarmentInquiryModal({
               {/* Close Button */}
               <button
                 onClick={onClose}
+                aria-label="Zapri"
                 className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors z-10"
               >
                 <X className="w-5 h-5" />
@@ -76,7 +77,7 @@ export default function GarmentInquiryModal({
 
               <div className="p-8">
                 {submitted ? (
-                  <div className="text-center py-12 space-y-4">
+                  <div role="status" aria-live="polite" className="text-center py-12 space-y-4">
                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                       <svg
                         className="w-8 h-8"
@@ -178,7 +179,7 @@ export default function GarmentInquiryModal({
                       </div>
 
                       {error && (
-                        <div className="text-red-500 text-sm bg-red-50 p-3 rounded-sm">
+                        <div role="alert" className="text-red-500 text-sm bg-red-50 p-3 rounded-sm">
                           {error}
                         </div>
                       )}

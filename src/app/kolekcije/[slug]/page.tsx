@@ -251,11 +251,42 @@ export default async function CollectionDetailPage({ params }: { params: Promise
     .filter(c => c.id !== collection.id)
     .slice(0, 3);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Domov",
+        "item": "https://www.patriciapie.si"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Kolekcije",
+        "item": "https://www.patriciapie.si/kolekcije"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": collection.title,
+        "item": `https://www.patriciapie.si/kolekcije/${slug}`
+      }
+    ]
+  };
+
   return (
-    <CollectionClientPage 
-      collection={collection} 
-      galleryImages={galleryImages}
-      otherCollections={otherCollections}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CollectionClientPage
+        collection={collection}
+        galleryImages={galleryImages}
+        otherCollections={otherCollections}
+      />
+    </>
   );
 }

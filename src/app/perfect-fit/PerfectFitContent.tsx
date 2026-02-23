@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
@@ -9,7 +8,9 @@ import { Heading } from "@/components/ui/Heading";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CloudinaryImage from "@/components/shared/CloudinaryImage";
+import LocationCard from "@/components/locations/LocationCard";
 import { Check, ChevronDown, ChevronUp, Gift } from "lucide-react";
+import { BOOKABLE_LOCATIONS } from "@/lib/locations";
 import { useBooking } from '@/components/booking/BookingContext';
 
 // FAQ Data
@@ -37,13 +38,18 @@ const faqs = [
 ];
 
 // Accordion Component
-function AccordionItem({ question, answer }: { question: string; answer: string }) {
+function AccordionItem({ question, answer, id }: { question: string; answer: string; id: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerId = `faq-trigger-${id}`;
+  const panelId = `faq-panel-${id}`;
 
   return (
     <div className="border-b border-tertiary/20 last:border-none">
       <button
+        id={triggerId}
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="flex w-full justify-between items-center py-4 text-left focus:outline-none group"
       >
         <span className="text-lg font-medium text-foreground group-hover:text-tertiary transition-colors">
@@ -56,6 +62,9 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
         )}
       </button>
       <motion.div
+        id={panelId}
+        role="region"
+        aria-labelledby={triggerId}
         initial={false}
         animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
@@ -125,135 +134,11 @@ export default function PerfectFitContent() {
 
         {/* Locations */}
         <Section className="bg-secondary/10">
-          <Heading size="lg" className="text-center mb-12">Tri lokacije. Ena filozofija.</Heading>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Showroom S7 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="/images/showroom_ipad_coffeetable_pov.png"
-                  alt="Showroom Ljubljana S7"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Showroom Ljubljana S7</h3>
-                <p className="text-sm text-muted-foreground mb-4">Stegne 7, Ljubljana</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Najbolj intimna, mirna, luksuzna izkušnja</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Popolna osredotočenost na stranko</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealen za meritve, svetovanje, final fitting</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Zasebno, 1 stranka = 1 termin</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Brezplačno parkirišče pred stavbo</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Premium izbira in priporočena lokacija za celostno izkušnjo.</p>
-              </div>
-            </motion.div>
-
-            {/* Zoofa */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <CloudinaryImage
-                  src="Zoofa_hmxuxr"
-                  alt="Zoofa Butik"
-                  fill
-                  containerClassName="h-full w-full"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Zoofa Butik</h3>
-                <p className="text-sm text-muted-foreground mb-4">Center Ljubljane</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Pomerjanje in svetovanje možno</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealno za stranke, ki so v centru mesta</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Barbara izvede meritve in posvet</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground/70">
-                     <span className="w-4 text-center mr-2">⟳</span>
-                     <span>Možne motnje (druge stranke)</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Odlična alternativa za hitro opravljene meritve.</p>
-              </div>
-            </motion.div>
-
-            {/* Atelje */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="/images/atelier_sewing_machine_final.png"
-                  alt="Atelje Gornja Radgona"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Atelje Gornja Radgona</h3>
-                <p className="text-sm text-muted-foreground mb-4">Gornja Radgona</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Polna kreativna atmosfera</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Najgloblje povezovanje z nastankom oblačil</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealno za stranke iz severovzhodne Slovenije</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground/70">
-                     <span className="w-4 text-center mr-2">⟳</span>
-                     <span>Bolj delovno-kreativno okolje</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Za ženske, ki želijo &ldquo;iza kulis&rdquo; izkušnjo.</p>
-              </div>
-            </motion.div>
+          <Heading size="lg" className="text-center mb-12">Štiri lokacije. Ena filozofija.</Heading>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {BOOKABLE_LOCATIONS.map((loc, i) => (
+              <LocationCard key={loc.id} location={loc} index={i} showBadge showMapLink />
+            ))}
           </div>
         </Section>
 
@@ -648,7 +533,7 @@ export default function PerfectFitContent() {
             <Heading size="lg" className="text-center mb-12">Pogosta vprašanja</Heading>
             <div className="space-y-2">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} question={faq.question} answer={faq.answer} />
+                <AccordionItem key={index} id={String(index)} question={faq.question} answer={faq.answer} />
               ))}
             </div>
           </div>

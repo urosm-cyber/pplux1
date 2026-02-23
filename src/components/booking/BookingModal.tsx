@@ -6,14 +6,9 @@ import { X, Calendar, User, Mail, Phone, MessageSquare, Check, MapPin, Sparkles 
 import { useBooking } from './BookingContext';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
-import Image from 'next/image';
+import CloudinaryImage from '@/components/shared/CloudinaryImage';
 import { sendBookingInquiry } from '@/app/actions';
-
-const locations = [
-  { id: 'showroom', name: 'Showroom Ljubljana (Stegne 7)', label: 'Showroom S7, Ljubljana (Priporočeno)' },
-  { id: 'zoofa', name: 'Zoofa Butik (Ljubljana Center)', label: 'Zoofa Butik, Ljubljana Center' },
-  { id: 'atelje', name: 'Atelje (Gornja Radgona)', label: 'Atelje, Gornja Radgona' }
-];
+import { BOOKABLE_LOCATIONS } from '@/lib/locations';
 
 export default function BookingModal() {
   const { isOpen, closeBooking } = useBooking();
@@ -50,7 +45,7 @@ export default function BookingModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeBooking}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-100"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-[60]"
           />
 
           {/* Modal Container */}
@@ -58,23 +53,23 @@ export default function BookingModal() {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-0 z-101 flex items-center justify-center p-4 sm:p-6 pointer-events-none"
+            className="fixed inset-0 z-[61] flex items-center justify-center p-4 sm:p-6 pointer-events-none"
           >
             {/* Modal Content */}
             <div className="w-full max-w-5xl bg-background shadow-2xl rounded-sm overflow-hidden flex flex-col md:flex-row max-h-[90vh] pointer-events-auto border border-secondary/20">
               
               {/* Left Side - Visual (Hidden on mobile) */}
               <div className="hidden md:block w-1/3 lg:w-2/5 relative min-h-[600px] bg-secondary/10">
-                <Image
-                  src="/images/showroom/detail.png" /* Fallback to a known image */
+                <CloudinaryImage
+                  src="showroom-detail_je8xir"
                   alt="Patricia Pie Showroom"
                   fill
+                  containerClassName="h-full w-full"
                   className="object-cover opacity-90"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent flex flex-col justify-end p-8 text-white">
                   <h3 className="font-heading text-3xl mb-2">Želiš svoj termin?</h3>
-                  <div className="space-y-1 mb-8">
-                     <p className="font-light opacity-90">Stegne 7, Ljubljana</p>
+                  <div className="mb-8">
                      <p className="font-light text-sm opacity-75">+386 41 988 384</p>
                   </div>
                   
@@ -101,15 +96,16 @@ export default function BookingModal() {
               {/* Right Side - Form */}
               <div className="flex-1 p-8 md:p-12 overflow-y-auto relative bg-background">
                 {/* Close Button */}
-                <button 
+                <button
                   onClick={closeBooking}
+                  aria-label="Zapri"
                   className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-tertiary transition-colors rounded-full hover:bg-secondary/10"
                 >
                   <X className="w-6 h-6" />
                 </button>
 
                 {formState === 'success' ? (
-                  <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12">
+                  <div role="status" aria-live="polite" className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12">
                     <motion.div 
                       initial={{ scale: 0 }} 
                       animate={{ scale: 1 }}
@@ -207,9 +203,12 @@ export default function BookingModal() {
                               className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors text-foreground rounded-t-sm appearance-none"
                               defaultValue="showroom"
                             >
-                              {locations.map((loc) => (
-                                <option key={loc.id} value={loc.label}>
-                                  {loc.name}
+                              {BOOKABLE_LOCATIONS.map((loc) => (
+                                <option
+                                  key={loc.id}
+                                  value={loc.id}
+                                >
+                                  {loc.shortName}{loc.bookingNote ? ` — ${loc.bookingNote}` : ''}
                                 </option>
                               ))}
                             </select>
@@ -246,7 +245,7 @@ export default function BookingModal() {
                       </div>
 
                       {formState === 'error' && (
-                        <div className="p-3 bg-red-50 text-red-600 text-sm rounded-sm">
+                        <div role="alert" className="p-3 bg-red-50 text-red-600 text-sm rounded-sm">
                           Prišlo je do napake pri pošiljanju. Prosimo poskusite ponovno.
                         </div>
                       )}

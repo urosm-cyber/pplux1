@@ -83,7 +83,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
         size="sm" 
         onClick={toggleMenu} 
         aria-label="Toggle menu"
-        className={`hover:bg-transparent ${isScrolled ? 'text-[#3D3535]' : 'text-white'}`}
+        className={`hover:bg-transparent ${isScrolled ? 'text-foreground' : 'text-white'}`}
       >
         <Menu className="h-8 w-8" />
       </Button>
@@ -98,7 +98,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-[999] flex flex-col bg-[#FDFBF9]"
+            className="fixed inset-0 z-[70] flex flex-col bg-background"
           >
             <div className="flex items-center justify-between p-6">
               <div className="relative h-10 w-40">
@@ -116,7 +116,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
                 size="sm" 
                 onClick={toggleMenu} 
                 aria-label="Close menu"
-                className="text-[#3D3535] hover:bg-transparent"
+                className="text-foreground hover:bg-transparent"
               >
                 <X className="h-8 w-8" />
               </Button>
@@ -133,7 +133,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
                 <motion.div key={item.href} variants={itemVariants}>
                   <Link
                     href={item.href}
-                    className="text-3xl font-heading font-medium tracking-wide text-[#3D3535] hover:text-[#C9A66B] transition-colors"
+                    className="text-3xl font-heading font-medium tracking-wide text-foreground hover:text-tertiary transition-colors"
                     onClick={toggleMenu}
                   >
                     {item.label}
@@ -147,7 +147,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
                       toggleMenu();
                       openBooking();
                     }} 
-                    className="w-64 text-lg py-7 bg-[#C9A66B] hover:bg-[#b08d55] text-white rounded-none tracking-wider uppercase"
+                    className="w-64 text-lg py-7 bg-tertiary hover:bg-tertiary/85 text-white rounded-none tracking-wider uppercase"
                  >
                     Rezerviraj termin
                  </Button>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook, Linkedin } from 'lucide-react';
 import FooterNewsletter from '@/components/layout/FooterNewsletter';
+import { OWN_LOCATIONS, PARTNER_LOCATIONS } from '@/lib/locations';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,14 +40,22 @@ export default function Footer() {
           {/* Contact Column */}
           <div className="space-y-4">
             <h3 className="font-heading text-lg font-semibold">Kontakt</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground/80">
-              <li className="flex flex-col">
-                <span className="font-medium text-foreground">Showroom</span>
-                <span>Stegne 7, 1000 Ljubljana</span>
-              </li>
-              <li className="flex flex-col">
-                <span className="font-medium text-foreground">Atelje</span>
-                <span>Jurkovičeva ulica 1, 9250 Gornja Radgona</span>
+            <ul className="space-y-2 text-sm text-muted-foreground/80">
+              {OWN_LOCATIONS.map((loc) => (
+                <li key={loc.id} className="flex flex-col">
+                  <span className="font-medium text-foreground">{loc.shortName}</span>
+                  <span>{loc.address}, {loc.postalCode} {loc.city}</span>
+                </li>
+              ))}
+              {PARTNER_LOCATIONS.map((loc) => (
+                <li key={loc.id}>
+                  <span className="font-medium text-foreground">{loc.shortName}</span> · {loc.city}
+                </li>
+              ))}
+              <li>
+                <Link href="/kontakt" className="text-xs text-muted-foreground/60 hover:text-tertiary transition-colors">
+                  Vse lokacije →
+                </Link>
               </li>
               <li className="pt-2">
                 <span className="block text-xs text-muted-foreground uppercase tracking-wider mb-1">Rezervacije & Klepet</span>

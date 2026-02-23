@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import CloudinaryImage from '@/components/shared/CloudinaryImage';
 import Hero from '@/components/sections/Hero';
 import Newsletter from '@/components/sections/Newsletter';
+import HomepageLocations from '@/components/sections/HomepageLocations';
 import { Check, Gift } from 'lucide-react';
 
 export default function Home() {
@@ -38,14 +39,14 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* Intro / Philosophy Section */}
+        {/* Intro — Who We Are */}
         <Section className="bg-background text-center py-24">
           <div className="max-w-3xl mx-auto space-y-6">
-            <Heading size="lg">Pie Filozofija</Heading>
+            <Heading size="lg">Kdo smo</Heading>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Vsak kos je sestavina. Vsaka kolekcija je del celote. 
-              Patricia Pie ne sledi hitrim trendom, ampak gradi tvojo garderobo počasi, premišljeno in z ljubeznijo.
-              Ustvarjamo kose, v katerih se počutiš samozavestno in avtentično.
+              Patricia Pie je slovenska modna hiša z lastnim ateljejem v Gornji Radgoni in showroomom v Ljubljani.
+              Oblikujemo ženstven, brezčasen slog — vsak kos je mogoče prilagoditi tvojim meram s storitvijo Perfect Fit.
+              Najdeš nas na 4 lokacijah po Sloveniji.
             </p>
             <Link href="/o-znamki" className="inline-block pt-4 text-tertiary hover:text-foreground transition-colors font-medium border-b border-tertiary hover:border-foreground pb-1">
               Preberi več o naši zgodbi
@@ -200,6 +201,9 @@ export default function Home() {
             </div>
           </div>
         </Section>
+
+        {/* Locations */}
+        <HomepageLocations />
       </main>
 
 

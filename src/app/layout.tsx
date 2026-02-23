@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import GoogleAnalyticsManager from "@/components/analytics/GoogleAnalyticsManager";
 import { BookingProvider } from "@/components/booking/BookingContext";
 import CookieConsent from "@/components/layout/CookieConsent";
+import { LOCATIONS } from "@/lib/locations";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -86,6 +87,17 @@ export default function RootLayout({
                 "postalCode": "1000",
                 "addressCountry": "SI"
               },
+              "location": LOCATIONS.map((loc) => ({
+                "@type": "LocalBusiness",
+                "name": `Patricia Pie — ${loc.name}`,
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": loc.address,
+                  "addressLocality": loc.city,
+                  "postalCode": loc.postalCode,
+                  "addressCountry": "SI"
+                }
+              })),
               "geo": {
                 "@type": "GeoCoordinates",
                 "latitude": 46.0804,

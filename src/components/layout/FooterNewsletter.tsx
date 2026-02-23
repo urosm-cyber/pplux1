@@ -46,7 +46,7 @@ export default function FooterNewsletter() {
 
   if (state?.success) {
     return (
-      <div className="flex items-center gap-2 text-sm text-emerald-600 bg-emerald-50/50 p-3 rounded-sm animate-in fade-in slide-in-from-bottom-2">
+      <div role="status" aria-live="polite" className="flex items-center gap-2 text-sm text-emerald-600 bg-emerald-50/50 p-3 rounded-sm animate-in fade-in slide-in-from-bottom-2">
         <Check className="h-4 w-4 shrink-0" />
         <p className="font-medium">Hvala za prijavo.</p>
       </div>
@@ -80,7 +80,7 @@ export default function FooterNewsletter() {
       </form>
 
       {state?.error && (
-        <div className="flex items-center gap-2 text-xs text-red-600 animate-in fade-in">
+        <div role="alert" className="flex items-center gap-2 text-xs text-red-600 animate-in fade-in">
           <AlertCircle className="h-3 w-3 shrink-0" />
           <p>{state.error}</p>
         </div>

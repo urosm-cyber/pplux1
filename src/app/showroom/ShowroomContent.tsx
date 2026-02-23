@@ -114,10 +114,10 @@ export default function ShowroomContent() {
             className="max-w-4xl mx-auto text-center space-y-12"
           >
             <div className="space-y-6">
-              <span className="text-tertiary uppercase tracking-widest text-sm font-medium">Parižsko šik · Cozy & Chic · Modern & Clean</span>
+              <span className="text-tertiary uppercase tracking-widest text-sm font-medium">Pariško šik · Udobno & Elegantno · Sodobno & Čisto</span>
               <Heading size="lg">Tvoj zasebni modni atelje</Heading>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Prostor deluje kot mešanica parižskega stanovanja, intimnega ateljeja in couture svetovalnice. 
+                Prostor deluje kot mešanica pariškega stanovanja, intimnega ateljeja in couture svetovalnice. 
                 Bele stene, lesena obloga za toplino, mehka naravna svetloba in veliko ogledalo za popolne silhuete.
               </p>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -340,6 +340,7 @@ export default function ShowroomContent() {
               className="relative aspect-square md:aspect-4/3 overflow-hidden rounded-sm shadow-lg bg-background"
             >
               <iframe
+                title="Google Maps - Showroom Patricia Pie, Stegne 7, Ljubljana"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2768.1!2d14.552!3d46.078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDA0JzQwLjgiTiAxNMKwMzMnMDcuMiJF!5e0!3m2!1sen!2ssi!4v1234567890"
                 width="100%"
                 height="100%"

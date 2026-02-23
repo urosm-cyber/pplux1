@@ -1,16 +1,32 @@
 'use server'
 
 import { Resend } from 'resend';
+import { headers } from 'next/headers';
+import { escapeHtml } from '@/lib/sanitize';
+import { newsletterSchema, bookingSchema, contactSchema, garmentInquirySchema } from '@/lib/schemas';
+import { checkRateLimit } from '@/lib/rate-limit';
+import { BOOKABLE_LOCATIONS } from '@/lib/locations';
+
+async function getClientIp(): Promise<string> {
+  const hdrs = await headers();
+  return hdrs.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+}
 
 export async function subscribeToNewsletter(formData: FormData) {
   const apiKey = process.env.RESEND_API_KEY;
-  
+
   // Honeypot check
   const honey = formData.get('_honey');
   if (honey && String(honey).length > 0) {
     return { success: true }; // Silent success for bots
   }
-  
+
+  // Rate limit
+  const ip = await getClientIp();
+  if (!checkRateLimit(`newsletter:${ip}`).allowed) {
+    return { error: 'Preveč poskusov. Poskusite čez 15 minut.', success: false };
+  }
+
   if (!apiKey) {
     console.error('RESEND_API_KEY is missing');
     return {
@@ -19,15 +35,16 @@ export async function subscribeToNewsletter(formData: FormData) {
     };
   }
 
-  const resend = new Resend(apiKey);
-  const email = formData.get('email');
-
-  if (!email || typeof email !== 'string') {
-    return {
-      error: 'Prosimo, vnesite veljaven e-poštni naslov.',
-      success: false
-    };
+  // Validate
+  const parsed = newsletterSchema.safeParse({
+    email: formData.get('email'),
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message || 'Neveljavni podatki.', success: false };
   }
+
+  const { email } = parsed.data;
+  const resend = new Resend(apiKey);
 
   try {
     await resend.contacts.create({
@@ -35,11 +52,11 @@ export async function subscribeToNewsletter(formData: FormData) {
       firstName: '',
       lastName: '',
       unsubscribed: false,
-      audienceId: '56cfe3f5-ba65-4029-8dc1-bea38254834a' 
+      audienceId: '56cfe3f5-ba65-4029-8dc1-bea38254834a'
     });
-    
+
     const emailResult = await resend.emails.send({
-      from: 'Patricia Pie <info@patriciapie.si>', 
+      from: 'Patricia Pie <info@patriciapie.si>',
       to: email,
       subject: 'Dobrodošli v svetu Patricia Pie',
       html: `
@@ -85,33 +102,58 @@ export async function sendBookingInquiry(formData: FormData) {
     return { success: true };
   }
 
+  // Rate limit
+  const ip = await getClientIp();
+  if (!checkRateLimit(`booking:${ip}`).allowed) {
+    return { success: false, error: 'Preveč poskusov. Poskusite čez 15 minut.' };
+  }
+
   if (!apiKey) {
     return { success: false, error: 'Server configuration error' };
   }
 
+  // Validate
+  const parsed = bookingSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+    phone: formData.get('phone') || '',
+    date: formData.get('date') || '',
+    location: formData.get('location'),
+    message: formData.get('message') || '',
+  });
+  if (!parsed.success) {
+    return { success: false, error: parsed.error.issues[0]?.message || 'Neveljavni podatki.' };
+  }
+
+  const { name, email, phone, date, location, message } = parsed.data;
   const resend = new Resend(apiKey);
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const phone = formData.get('phone') as string;
-  const date = formData.get('date') as string;
-  const location = formData.get('location') as string;
-  const message = formData.get('message') as string;
+
+  // Resolve location id to display name
+  const locationObj = BOOKABLE_LOCATIONS.find((l) => l.id === location);
+  const locationDisplay = locationObj ? locationObj.shortName : location;
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
+  const safeDate = escapeHtml(date);
+  const safeLocation = escapeHtml(locationDisplay);
+  const safeMessage = escapeHtml(message);
 
   try {
     // 1. Send notification to Business Owner
     await resend.emails.send({
       from: 'Patricia Pie Website <info@patriciapie.si>',
-      to: 'info@patriciapie.si', // Replace with actual business email in production
-      subject: `Novo povpraševanje za termin: ${name}`,
+      to: 'info@patriciapie.si',
+      subject: `Novo povpraševanje za termin: ${safeName}`,
       html: `
         <div style="font-family: sans-serif; color: #333;">
           <h2>Novo povpraševanje za termin</h2>
-          <p><strong>Stranka:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Telefon:</strong> ${phone || '/'}</p>
-          <p><strong>Lokacija:</strong> ${location}</p>
-          <p><strong>Želeni datum:</strong> ${date || 'Ni določeno'}</p>
-          <p><strong>Sporočilo:</strong><br>${message || '/'}</p>
+          <p><strong>Stranka:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Telefon:</strong> ${safePhone || '/'}</p>
+          <p><strong>Lokacija:</strong> ${safeLocation}</p>
+          <p><strong>Želeni datum:</strong> ${safeDate || 'Ni določeno'}</p>
+          <p><strong>Sporočilo:</strong><br>${safeMessage.replace(/\n/g, '<br>') || '/'}</p>
         </div>
       `
     });
@@ -124,15 +166,15 @@ export async function sendBookingInquiry(formData: FormData) {
       html: `
         <div style="font-family: serif; color: #3D3535; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #C9A66B; border-bottom: 1px solid #C9A66B; padding-bottom: 10px;">Komaj čakam najino srečanje.</h1>
-          <p>Zdravo ${name},</p>
+          <p>Zdravo ${safeName},</p>
           <p>Hvala za tvoje sporočilo. Barbara te bom kontaktirala v roku 24 ur, da uskladiva točen termin, ki ti najbolj ustreza.</p>
-          
+
           <div style="background-color: #f9f9f9; padding: 15px; margin: 20px 0; border-left: 3px solid #C9A66B;">
             <p style="margin: 5px 0; font-size: 14px;"><strong>Povzetek tvojih želja:</strong></p>
-            <p style="margin: 5px 0;"><strong>Lokacija:</strong> ${location}</p>
-            <p style="margin: 5px 0;"><strong>Želeni datum:</strong> ${date || '/'}</p>
-            <p style="margin: 5px 0;"><strong>Telefon:</strong> ${phone || '/'}</p>
-            <p style="margin: 5px 0;"><strong>Sporočilo:</strong> ${message || '/'}</p>
+            <p style="margin: 5px 0;"><strong>Lokacija:</strong> ${safeLocation}</p>
+            <p style="margin: 5px 0;"><strong>Želeni datum:</strong> ${safeDate || '/'}</p>
+            <p style="margin: 5px 0;"><strong>Telefon:</strong> ${safePhone || '/'}</p>
+            <p style="margin: 5px 0;"><strong>Sporočilo:</strong> ${safeMessage || '/'}</p>
           </div>
 
           <p>Se vidiva kmalu.</p>
@@ -157,31 +199,50 @@ export async function sendContactForm(formData: FormData) {
     return { success: true };
   }
 
+  // Rate limit
+  const ip = await getClientIp();
+  if (!checkRateLimit(`contact:${ip}`).allowed) {
+    return { success: false, error: 'Preveč poskusov. Poskusite čez 15 minut.' };
+  }
+
   if (!apiKey) {
     return { success: false, error: 'Konfiguracijska napaka.' };
   }
 
+  // Validate
+  const parsed = contactSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+    type: formData.get('type'),
+    message: formData.get('message') || '',
+  });
+  if (!parsed.success) {
+    return { success: false, error: parsed.error.issues[0]?.message || 'Neveljavni podatki.' };
+  }
+
+  const { name, email, type, message } = parsed.data;
   const resend = new Resend(apiKey);
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const type = formData.get('type') as string;
-  const message = (formData.get('message') as string) || '';
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeType = escapeHtml(type);
+  const safeMessage = escapeHtml(message);
 
   try {
     // 1. Notify Business
     await resend.emails.send({
       from: 'Patricia Pie Website <info@patriciapie.si>',
       to: 'info@patriciapie.si',
-      subject: `Novo sporočilo: ${type} - ${name}`,
+      subject: `Novo sporočilo: ${safeType} - ${safeName}`,
       html: `
         <div style="font-family: sans-serif; color: #333;">
           <h2>Novo sporočilo s spletne strani</h2>
-          <p><strong>Ime:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Vrsta:</strong> ${type}</p>
+          <p><strong>Ime:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Vrsta:</strong> ${safeType}</p>
           <div style="background: #f5f5f5; padding: 15px; margin: 10px 0;">
             <p><strong>Sporočilo:</strong></p>
-            <p>${message.replace(/\n/g, '<br>')}</p>
+            <p>${safeMessage.replace(/\n/g, '<br>')}</p>
           </div>
         </div>
       `
@@ -195,8 +256,8 @@ export async function sendContactForm(formData: FormData) {
       html: `
         <div style="font-family: serif; color: #3D3535; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #C9A66B; border-bottom: 1px solid #C9A66B; padding-bottom: 10px;">Hvala za tvoje sporočilo.</h1>
-          <p>Zdravo ${name},</p>
-          <p>Hvala za tvoje sporočilo glede "<strong>${type}</strong>".</p>
+          <p>Zdravo ${safeName},</p>
+          <p>Hvala za tvoje sporočilo glede "<strong>${safeType}</strong>".</p>
           <p>Odgovorimo ti v najkrajšem možnem času.</p>
           <p>Lep pozdrav,<br>Ekipa Patricia Pie</p>
         </div>
@@ -219,38 +280,58 @@ export async function sendGarmentInquiry(formData: FormData) {
     return { success: true };
   }
 
+  // Rate limit
+  const ip = await getClientIp();
+  if (!checkRateLimit(`garment:${ip}`).allowed) {
+    return { success: false, error: 'Preveč poskusov. Poskusite čez 15 minut.' };
+  }
+
   if (!apiKey) {
     return { success: false, error: 'Konfiguracijska napaka.' };
   }
 
+  // Validate
+  const parsed = garmentInquirySchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message') || '',
+    imageUrl: formData.get('imageUrl'),
+    collectionTitle: formData.get('collectionTitle'),
+  });
+  if (!parsed.success) {
+    return { success: false, error: parsed.error.issues[0]?.message || 'Neveljavni podatki.' };
+  }
+
+  const { name, email, message, imageUrl, collectionTitle } = parsed.data;
   const resend = new Resend(apiKey);
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const message = (formData.get('message') as string) || '';
-  const imageUrl = formData.get('imageUrl') as string;
-  const collectionTitle = formData.get('collectionTitle') as string;
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message);
+  const safeCollectionTitle = escapeHtml(collectionTitle);
+  const safeImageUrl = escapeHtml(imageUrl);
 
   try {
     // 1. Notify Business
     await resend.emails.send({
       from: 'Patricia Pie Website <info@patriciapie.si>',
       to: 'info@patriciapie.si',
-      subject: `Povpraševanje za kos: ${collectionTitle} - ${name}`,
+      subject: `Povpraševanje za kos: ${safeCollectionTitle} - ${safeName}`,
       html: `
         <div style="font-family: sans-serif; color: #333;">
           <h2>Novo povpraševanje za oblačilo</h2>
-          <p><strong>Stranka:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Kolekcija:</strong> ${collectionTitle}</p>
-          
+          <p><strong>Stranka:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Kolekcija:</strong> ${safeCollectionTitle}</p>
+
           <div style="margin: 20px 0;">
             <p><strong>Izbrani kos:</strong></p>
-            <img src="${imageUrl}" alt="Izbrani kos" style="max-width: 300px; border: 1px solid #ddd; border-radius: 4px;" />
+            <img src="${safeImageUrl}" alt="Izbrani kos" style="max-width: 300px; border: 1px solid #ddd; border-radius: 4px;" />
           </div>
 
           <div style="background: #f5f5f5; padding: 15px; margin: 10px 0;">
             <p><strong>Sporočilo:</strong></p>
-            <p>${message.replace(/\n/g, '<br>')}</p>
+            <p>${safeMessage.replace(/\n/g, '<br>')}</p>
           </div>
         </div>
       `
@@ -264,11 +345,11 @@ export async function sendGarmentInquiry(formData: FormData) {
       html: `
         <div style="font-family: serif; color: #3D3535; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #C9A66B; border-bottom: 1px solid #C9A66B; padding-bottom: 10px;">Hvala za tvoje zanimanje.</h1>
-          <p>Zdravo ${name},</p>
-          <p>Veseli me, da te je nagovoril kos iz kolekcije <strong>${collectionTitle}</strong>.</p>
-          
+          <p>Zdravo ${safeName},</p>
+          <p>Veseli me, da te je nagovoril kos iz kolekcije <strong>${safeCollectionTitle}</strong>.</p>
+
           <div style="margin: 20px 0; text-align: center;">
-             <img src="${imageUrl}" alt="Izbrani kos" style="max-width: 200px; border: 1px solid #ddd; border-radius: 2px;" />
+             <img src="${safeImageUrl}" alt="Izbrani kos" style="max-width: 200px; border: 1px solid #ddd; border-radius: 2px;" />
           </div>
 
           <p>Tvoje sporočilo bom z veseljem prebrala in se ti kmalu javim.</p>
