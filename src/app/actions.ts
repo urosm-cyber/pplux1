@@ -165,7 +165,7 @@ export async function sendContactForm(formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const type = formData.get('type') as string;
-  const message = formData.get('message') as string;
+  const message = (formData.get('message') as string) || '';
 
   try {
     // 1. Notify Business
@@ -226,7 +226,7 @@ export async function sendGarmentInquiry(formData: FormData) {
   const resend = new Resend(apiKey);
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
-  const message = formData.get('message') as string;
+  const message = (formData.get('message') as string) || '';
   const imageUrl = formData.get('imageUrl') as string;
   const collectionTitle = formData.get('collectionTitle') as string;
 
