@@ -2,37 +2,85 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CloudinaryImage from "@/components/shared/CloudinaryImage";
-import { Check, ChevronDown, ChevronUp, Gift } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBooking } from '@/components/booking/BookingContext';
+
+// Testimonial Data
+const testimonials = [
+  {
+    quote: "Dolgo sem imela občutek, da moram pri oblačilih vedno nekaj sprejeti kot kompromis. Pri Patricia Pie sem prvič stala pred ogledalom in si nisem želela ničesar popraviti. Samo vedela sem, da je to to.",
+    name: "Maja H.",
+    location: "Ljubljana"
+  },
+  {
+    quote: "Ker sem visoka, sem zelo težko našla plašč, v katerem bi bilo vse na svojem mestu. Pri Patricia Pie sem prvič imela občutek, da mi ni treba ničesar prilagajati. To je bil res poseben mir.",
+    name: "Nina R.",
+    location: "Maribor"
+  },
+  {
+    quote: "Najlepši del ni bil samo to, kako je kos izgledal. Bil je občutek, da sem v njem končno jaz. Mirna, samozavestna in brez tistega notranjega vprašanja, ali je res prav.",
+    name: "Petra K.",
+    location: "Celje"
+  }
+];
 
 // FAQ Data
 const faqs = [
   {
-    question: "Koliko stane storitev Perfect Fit?",
-    answer: "Naše cene so transparentne. Plašči po meri se običajno gibljejo od 580€, obleke od 320€, manjša popravila pa med 20€ in 50€. Končna cena je odvisna od izbranega materiala, a jo vedno določimo vnaprej na brezplačnem posvetu."
+    question: "Ali je prvo srečanje res brezplačno?",
+    answer: "Da.\nPrvo srečanje je brezplačno in brez obveznosti.\nNi pa površno.\nTo je čas za pogovor, usmeritev in občutek, kateri Patricia Pie modeli bi ti lahko zares ustrezali."
   },
   {
-    question: "Ali je prvi obisk res brezplačen?",
-    answer: "Da. Prvi obisk je namenjen temu, da se spoznamo, pogovorimo o vaših željah in vidimo, če smo pravi za vas. Je povsem neobvezujoč – če se ne odločite za naročilo, je to povsem v redu."
+    question: "Kaj dobim na prvem srečanju?",
+    answer: "Dobiš čas, pozornost in jasno smer.\nSkupaj pogledamo, kaj iščeš, kako želiš, da se v oblačilu počutiš, in kateri Patricia Pie modeli bi bili zate pravi.\nVelikokrat ženska že po tem srečanju natančno ve, kaj je njen naslednji korak."
   },
   {
-    question: "Koliko obiskov je potrebnih?",
-    answer: "Cenimo vaš čas. Običajno sta potrebna le dva obiska: prvi za meritve in izbiro (30-45 min) ter drugi za prevzem in finalni fit. Za zelo zahtevne kose se včasih dogovorimo za eno vmesno probo."
+    question: "Ali je Perfect Fit namenjen kateremukoli modelu?",
+    answer: "Perfect Fit je na voljo za Patricia Pie modele.\nIzbiraš lahko med modeli, ki so nastajali skozi leta in skozi kolekcije Patricia Pie."
   },
   {
-    question: "Kako hitro je oblačilo narejeno?",
-    answer: "Od potrditve do končnega izdelka običajno traja 5 do 10 delovnih dni. Če oblačilo potrebujete za določen datum ali dogodek, se bomo potrudili prilagoditi vašim rokom."
+    question: "Ali lahko prinesem fotografijo drugega oblačila in ga date izdelati?",
+    answer: "Fotografije, ideje in občutki so lahko dobrodošlo izhodišče za pogovor.\nPerfect Fit pa ne vključuje izdelave oblačil po fotografijah drugih znamk ali naključnih referencah.\nKončna izbira vedno temelji na Patricia Pie modelih."
+  },
+  {
+    question: "Ali se cena oblačila določi že vnaprej?",
+    answer: "Da.\nKo izberemo model, material in smer izvedbe, končno ceno določimo vnaprej.\nTako od začetka veš, kaj pričakovati."
+  },
+  {
+    question: "Koliko obiskov je običajno potrebnih?",
+    answer: "Najpogosteje sta potrebna dva do trije obiski.\nPrvi za pogovor in izbor modela, nato meritve, pomerjanje oziroma prevzem, odvisno od kosa."
+  },
+  {
+    question: "Kako hitro je kos pripravljen?",
+    answer: "Običajno je kos pripravljen v 5 do 10 delovnih dneh.\nČe ga potrebuješ za poseben datum, se vedno potrudimo poiskati najboljšo možnost."
   },
   {
     question: "Kaj če ne vem točno, kaj želim?",
-    answer: "To je naša specialnost. Barbara te bo vodila skozi proces, predlagala kroje glede na tvojo postavo in življenjski slog. Večina strank pride le z željo po \"nečem lepem\" in odide z najljubšim kosom v omari."
+    answer: "To je popolnoma v redu.\nVčasih je dovolj že občutek, ki ga iščeš — med srečanjem skupaj poiščemo Patricia Pie model, ki ti najbolj ustreza."
+  },
+  {
+    question: "Ali lahko s sabo prinesem fotografije, ideje ali oblačilo, ki mi je všeč?",
+    answer: "Seveda.\nVse, kar pomaga pokazati občutek, silhueto ali smer, je dobrodošlo kot izhodišče za pogovor.\nPerfect Fit pa vedno izhaja iz Patricia Pie modelov."
+  },
+  {
+    question: "Je Perfect Fit primeren tudi, če težko najdem nekaj, kar mi res lepo stoji?",
+    answer: "Prav takrat je Perfect Fit pogosto najlepša rešitev.\nKo Patricia Pie model prilagodimo tebi, se spremeni tudi občutek, kako ga nosiš."
+  },
+  {
+    question: "Kje poteka prvo srečanje?",
+    answer: "Srečanje lahko poteka v Studiu PP, v ateljeju, v butiku ali na izbranih Patricia Pie lokacijah.\nSkupaj izberemo prostor, ki ti najbolj ustreza."
+  },
+  {
+    question: "Ali je Perfect Fit namenjen samo posebnim priložnostim?",
+    answer: "Ne.\nVčasih nastane kos za pomemben dogodek, pogosto pa prav tisti, ki ga potem najraje nosiš znova in znova."
   }
 ];
 
@@ -61,7 +109,7 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <p className="pb-4 text-muted-foreground leading-relaxed">
+        <p className="pb-4 text-muted-foreground leading-relaxed whitespace-pre-line">
           {answer}
         </p>
       </motion.div>
@@ -71,13 +119,15 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
 
 export default function PerfectFitContent() {
   const { openBooking } = useBooking();
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
   return (
     <div className="flex min-h-screen flex-col w-full overflow-x-hidden">
       <Header />
 
       <main className="flex-1 w-full">
         {/* Hero Section */}
-        <section className="relative h-[60vh] min-h-[500px] w-full flex items-center justify-center text-center text-white overflow-hidden">
+        <section className="relative h-[85vh] min-h-[600px] w-full flex items-center justify-center text-center text-white overflow-hidden">
           <div className="absolute inset-0">
             <CloudinaryImage
               src="HeartstringsOfPassion__11_rkb2xm"
@@ -86,179 +136,286 @@ export default function PerfectFitContent() {
               className="object-cover"
               containerClassName="h-full w-full"
               priority
+              sizes="100vw"
             />
-            <div className="absolute inset-0 bg-linear-to-b from-black/50 via-tertiary/20 to-black/40" />
+            {/* Subtle multi-layer overlay for depth and readability */}
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
           </div>
-          <div className="relative z-10 px-4 max-w-4xl mx-auto space-y-6">
-            <motion.h1 
+          
+          <div className="relative z-10 px-4 max-w-5xl mx-auto space-y-12">
+            <div className="space-y-6">
+              <motion.span 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="block text-xs uppercase tracking-[0.4em] font-light text-white/70"
+              >
+                Perfect Fit
+              </motion.span>
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[1.05]"
+              >
+                Ko ni več <br className="hidden md:block" /> ničesar za popraviti.
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg md:text-xl font-light text-white/90 max-w-xl mx-auto leading-relaxed"
+              >
+                Perfect Fit je trenutek, ko oblačilo ne zahteva prilagajanja. <br className="hidden md:block" />
+                Ko stojiš pred ogledalom in prvič začutiš mir. <br className="hidden md:block" />
+                Ker se je nekaj končno prilagodilo tebi.
+              </motion.p>
+            </div>
+
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="font-heading text-5xl md:text-7xl font-light tracking-wide"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col items-center justify-center gap-8 pt-4"
             >
-              Perfect Fit
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light text-white/90 tracking-wide"
-            >
-              Osebno. Natančno. Tvoje.
-            </motion.p>
+              <div className="flex flex-col sm:flex-row items-center gap-8">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  onClick={openBooking}
+                  className="min-w-[220px] bg-white text-black hover:bg-white/90 border-white px-10"
+                >
+                  Rezerviraj termin
+                </Button>
+                <Link 
+                  href="#proces" 
+                  className="group relative text-white text-sm tracking-widest uppercase font-light overflow-hidden py-2"
+                >
+                  <span className="relative z-10">Kako poteka Perfect Fit</span>
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-white/30 transition-transform duration-500 scale-x-100 group-hover:scale-x-0 group-hover:origin-right" />
+                  <span className="absolute bottom-0 left-0 w-full h-px bg-white transition-transform duration-500 scale-x-0 group-hover:scale-x-100 group-hover:origin-left" />
+                </Link>
+              </div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="text-[10px] tracking-[0.2em] uppercase text-white/50"
+              >
+                Prvi obisk je brezplačen in brez obveznosti.
+              </motion.p>
+            </motion.div>
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          >
+            <ChevronDown className="h-6 w-6 text-white/30 animate-bounce" />
+          </motion.div>
         </section>
 
-        {/* What Is It */}
-        <Section className="bg-background text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <Heading size="lg">Srce znamke Patricia Pie</Heading>
-            <p className="text-xl font-medium text-foreground leading-relaxed">
-              Perfect Fit = izdelava kosa Patricia Pie po meritvah in specifičnih merah stranke.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Perfect Fit predstavlja srce znamke Patricia Pie — osebno couture izkušnjo, zasnovano za ženske, ki pričakujejo več kot samo oblačilo.
-              Je kombinacija natančnosti, intuicije, strokovnosti in iskrene želje, da se vsaka ženska počuti samozavestno, elegantno in avtentično.
-            </p>
+        {/* Emotional Recognition Section */}
+        <Section className="bg-background py-32 lg:py-48">
+          <div className="max-w-4xl mx-auto text-center space-y-16 lg:space-y-24">
+            {/* Opening Recognition */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-xl mx-auto space-y-8"
+            >
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-light text-foreground leading-[1.15]">
+                Ko veš, kako je, ko nič zares ne sede.
+              </h2>
+              <div className="text-lg md:text-xl font-light text-muted-foreground leading-relaxed">
+                <p>
+                  Včasih ni težava v tem, da ne najdeš pravega kosa. <br />
+                  Težava je v občutku, da moraš skoraj vedno nekaj popraviti.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Quiet List of Frustrations */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <div className="text-base md:text-lg font-light text-muted-foreground/60 space-y-2 md:space-y-3 italic">
+                <p>Povleči blago nižje.</p>
+                <p>Popraviti dolžino.</p>
+                <p>Skrivati, kar nočeš skrivati.</p>
+                <p>In ves čas misliti na oblačilo, namesto nase.</p>
+              </div>
+            </motion.div>
+
+            {/* Concluding Emotional Shift */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="max-w-md mx-auto pt-8 md:pt-16"
+            >
+              <p className="text-xl md:text-2xl font-light text-foreground leading-relaxed">
+                Perfect Fit nastane prav tukaj. <br />
+                V trenutku, ko si ne želiš več prilagajanja, <br />
+                ampak občutek, da je nekaj končno <br className="hidden md:block" /> narejeno zate.
+              </p>
+            </motion.div>
+
+            {/* Refined Emphasis Lines */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="pt-16 md:pt-24 border-t border-tertiary/10"
+            >
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 text-[11px] md:text-xs tracking-[0.4em] uppercase font-medium text-tertiary/80">
+                <div className="flex flex-col items-center gap-2">
+                  <span>Brez popravljanja.</span>
+                </div>
+                <span className="hidden md:block w-px h-8 bg-tertiary/20" />
+                <div className="flex flex-col items-center gap-2">
+                  <span>Brez ugibanja.</span>
+                </div>
+                <span className="hidden md:block w-px h-8 bg-tertiary/20" />
+                <div className="flex flex-col items-center gap-2">
+                  <span>Brez prilagajanja.</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </Section>
 
         {/* Locations */}
-        <Section className="bg-secondary/10">
-          <Heading size="lg" className="text-center mb-12">Tri lokacije. Ena filozofija.</Heading>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Showroom S7 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="/images/showroom_ipad_coffeetable_pov.png"
-                  alt="Showroom Ljubljana S7"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Showroom Ljubljana S7</h3>
-                <p className="text-sm text-muted-foreground mb-4">Stegne 7, Ljubljana</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Najbolj intimna, mirna, luksuzna izkušnja</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Popolna osredotočenost na stranko</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealen za meritve, svetovanje, final fitting</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Zasebno, 1 stranka = 1 termin</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Brezplačno parkirišče pred stavbo</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Premium izbira in priporočena lokacija za celostno izkušnjo.</p>
-              </div>
-            </motion.div>
+        <Section className="bg-secondary/5 py-32">
+          <div className="max-w-7xl mx-auto space-y-16">
+            <div className="text-center space-y-4 max-w-3xl mx-auto">
+              <Heading size="lg" className="mb-4">Štiri lokacije. Ena filozofija.</Heading>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+                Naj bo v Studiu PP v Ljubljani, ateljeju, butiku ali v hotelu Habakuk v Mariboru — bistvo ostaja isto. <br />
+                Miren prostor. Osebna pozornost. Občutek, da si vzeta zares.
+              </p>
+            </div>
 
-            {/* Zoofa */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <CloudinaryImage
-                  src="Zoofa_hmxuxr"
-                  alt="Zoofa Butik"
-                  fill
-                  containerClassName="h-full w-full"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Zoofa Butik</h3>
-                <p className="text-sm text-muted-foreground mb-4">Center Ljubljane</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Pomerjanje in svetovanje možno</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealno za stranke, ki so v centru mesta</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Barbara izvede meritve in posvet</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground/70">
-                     <span className="w-4 text-center mr-2">⟳</span>
-                     <span>Možne motnje (druge stranke)</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Odlična alternativa za hitro opravljene meritve.</p>
-              </div>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Studio Patricia Pie */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="bg-background rounded-sm border border-tertiary/10 overflow-hidden group flex flex-col h-full"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image
+                    src="/images/showroom_ipad_coffeetable_pov.png"
+                    alt="Studio PP Ljubljana"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1 justify-center text-center">
+                  <h3 className="text-xl font-heading mb-3 text-tertiary">Studio PP</h3>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                    Za trenutke, ko si želiš miru, časa in popolne pozornosti.
+                  </p>
+                </div>
+              </motion.div>
 
-            {/* Atelje */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-background rounded-sm border border-tertiary/20 overflow-hidden group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="/images/atelier_sewing_machine_final.png"
-                  alt="Atelje Gornja Radgona"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-heading mb-2 text-tertiary">Atelje Gornja Radgona</h3>
-                <p className="text-sm text-muted-foreground mb-4">Gornja Radgona</p>
-                <ul className="space-y-3 text-muted-foreground mb-6">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Polna kreativna atmosfera</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Najgloblje povezovanje z nastankom oblačil</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-tertiary mt-1 shrink-0" />
-                    <span>Idealno za stranke iz severovzhodne Slovenije</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-muted-foreground/70">
-                     <span className="w-4 text-center mr-2">⟳</span>
-                     <span>Bolj delovno-kreativno okolje</span>
-                  </li>
-                </ul>
-                <p className="text-sm italic text-tertiary/80">Za ženske, ki želijo &ldquo;iza kulis&rdquo; izkušnjo.</p>
-              </div>
-            </motion.div>
+              {/* Zoofa */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="bg-background rounded-sm border border-tertiary/10 overflow-hidden group flex flex-col h-full"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <CloudinaryImage
+                    src="Zoofa_hmxuxr"
+                    alt="Zoofa Butik"
+                    fill
+                    containerClassName="h-full w-full"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1 justify-center text-center">
+                  <h3 className="text-xl font-heading mb-3 text-tertiary">Zoofa butik</h3>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                    Za prvi stik, občutek in pogovor, iz katerega se lahko začne nekaj več.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Atelje */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-background rounded-sm border border-tertiary/10 overflow-hidden group flex flex-col h-full"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image
+                    src="/images/atelier_sewing_machine_final.png"
+                    alt="Atelje Gornja Radgona"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1 justify-center text-center">
+                  <h3 className="text-xl font-heading mb-3 text-tertiary">Atelje Gornja Radgona</h3>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                    Za prostor, kjer ideja, roke in natančnost pridejo čisto blizu.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Hotel Habakuk */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-background rounded-sm border border-tertiary/10 overflow-hidden group flex flex-col h-full"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <CloudinaryImage
+                    src="habakuk_cbtoan"
+                    alt="Hotel Habakuk Maribor"
+                    fill
+                    containerClassName="h-full w-full"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1 justify-center text-center">
+                  <h3 className="text-xl font-heading mb-3 text-tertiary">Hotel Habakuk Maribor</h3>
+                  <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                    Za osebno izkušnjo v Mariboru, kjer si vzameva čas, mir in pozornost samo zate.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </Section>
 
         {/* Process Timeline */}
-        <Section className="bg-linear-to-b from-background to-secondary/20 py-32 overflow-hidden">
+        <Section id="proces" className="bg-linear-to-b from-background to-secondary/20 py-32 overflow-hidden">
           <div className="max-w-7xl mx-auto relative">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -266,9 +423,9 @@ export default function PerfectFitContent() {
               viewport={{ once: true }}
               className="text-center mb-24"
             >
-              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6">Potek procesa</h2>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6">Kako poteka Perfect Fit</h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light">
-                Od prvega srečanja do končnega nasmeha. Tvoja pot do popolnega kosa.
+                Štirje mirni koraki do kosa, ki se prilagodi tebi.
               </p>
             </motion.div>
 
@@ -293,15 +450,18 @@ export default function PerfectFitContent() {
                         fill
                         containerClassName="h-full w-full"
                         className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                      />
                   </div>
                   <div className="absolute top-8 -right-3 w-6 h-6 bg-tertiary rounded-full border-4 border-background hidden lg:block z-20 shadow-sm" />
                 </div>
                 
                 <div className="px-2">
-                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Svetovanje & Meritve</h3>
+                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Svetovanje in meritve</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                    Srečanje v showroomu. Pogovor o tvojem stilu in željah. <strong>Barbara opravi natančne telesne meritve</strong>, ki postanejo osnova za tvoj osebni kroj.
+                    V Studiu PP začnemo s pogovorom.
+                    O tvojem ritmu, željah in občutku, ki ga iščeš.
+                    Nato sledijo natančne meritve, ki postanejo osnova za tvoj kos.
                   </p>
                 </div>
               </motion.div>
@@ -323,15 +483,17 @@ export default function PerfectFitContent() {
                         fill
                         containerClassName="h-full w-full"
                         className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                      />
                   </div>
                   <div className="absolute top-8 -right-3 w-6 h-6 bg-tertiary rounded-full border-4 border-background hidden lg:block z-20 shadow-sm" />
                 </div>
                 
                 <div className="px-2">
-                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Izdelava (90%)</h3>
+                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Izdelava kosa</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                    V našem ateljeju v Gornji Radgoni ekipa ukroji in zašije oblačilo do 90% končne podobe. Pripravljeno za finalno prilagajanje.
+                    V ateljeju se začne proces izdelave.
+                    Tam se ideja prevede v obliko, z vso pozornostjo do linije, občutka in detajlov.
                   </p>
                 </div>
               </motion.div>
@@ -353,6 +515,7 @@ export default function PerfectFitContent() {
                         fill
                         containerClassName="h-full w-full"
                         className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                      />
                   </div>
                   <div className="absolute top-8 -right-3 w-6 h-6 bg-tertiary rounded-full border-4 border-background hidden lg:block z-20 shadow-sm" />
@@ -361,7 +524,8 @@ export default function PerfectFitContent() {
                 <div className="px-2">
                   <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Vmesno pomerjanje</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                    Pomerite skoraj končan kos. Preverimo prileganje, udobje in silhueto. Označimo še zadnje milimetrske popravke.
+                    Ko je kos skoraj pripravljen, sledi pomerjanje.
+                    Takrat skupaj preveriva prileganje, gibanje in zadnje drobne prilagoditve.
                   </p>
                 </div>
               </motion.div>
@@ -383,6 +547,7 @@ export default function PerfectFitContent() {
                         fill
                         containerClassName="h-full w-full"
                         className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                      />
                   </div>
                   {/* Last dot is different or hidden */}
@@ -390,9 +555,10 @@ export default function PerfectFitContent() {
                 </div>
                 
                 <div className="px-2">
-                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Prevzem & Užitek</h3>
+                  <h3 className="text-xl font-heading mb-3 text-foreground group-hover:text-tertiary transition-colors">Prevzem</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                    Tvoj unikatni kos je končan. Prevzameš ga, pripravljenega, da postane tvoj najljubši kos garderobe.
+                    Na koncu prevzameš kos, ki ni narejen samo po meri,
+                    ampak po občutku, da se v njem res prepoznaš.
                   </p>
                 </div>
               </motion.div>
@@ -401,170 +567,140 @@ export default function PerfectFitContent() {
           </div>
         </Section>
 
-        {/* Why It Matters & Pricing */}
-        <Section className="bg-background">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Benefits */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <Heading size="lg">Zakaj izbrati Perfect Fit?</Heading>
-              <ul className="space-y-6">
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Couture natančnost v butičnem pristopu</h4>
-                    <p className="text-muted-foreground">Vrhunska kakovost ročnega dela v toplem, osebnem okolju.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Osebna pozornost na najvišji ravni</h4>
-                    <p className="text-muted-foreground">1 termin = 1 stranka. Barbara se ti popolnoma posveti.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Premium silhuete, ki poudarijo prednosti</h4>
-                    <p className="text-muted-foreground">Kroj prilagodimo tvoji edinstveni postavi in poudarimo, kar je najlepše.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">5-10 dni izdelave</h4>
-                    <p className="text-muted-foreground">Hiter proces brez kompromisov pri kakovosti.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Celostno svetovanje, ne samo merjenje</h4>
-                    <p className="text-muted-foreground">Barbara te vodi skozi barve, silhuete, priložnosti in dolgoročno strategijo garderobe.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Gradnja garderobe, ne kosov</h4>
-                    <p className="text-muted-foreground">Dolgoročna vizija, kjer vsak kos dela skupaj z drugimi.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Emocionalna transformacija</h4>
-                    <p className="text-muted-foreground">Ne gre le za oblačilo, ampak za obučutek samozavesti, ko ga obleke.</p>
-                  </div>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                  className="flex gap-4"
-                >
-                  <div className="mt-1 p-1 rounded-full bg-tertiary/10 h-fit">
-                    <Check className="h-5 w-5 text-tertiary" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-heading mb-1">Barbara kot osebni modni zaveznik</h4>
-                    <p className="text-muted-foreground">Dolgoročno partnerstvo, ne enkratna transakcija.</p>
-                  </div>
-                </motion.li>
-              </ul>
-            </motion.div>
+        {/* Kaj se spremeni */}
+        <Section className="bg-background py-32 lg:py-48 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
+            {/* Content List */}
+            <div className="space-y-20">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="space-y-6"
+              >
+                <Heading size="lg" className="leading-[1.15] max-w-xl">
+                  Kaj se spremeni, ko je nekaj res narejeno zate
+                </Heading>
+                <div className="text-xl font-light text-muted-foreground leading-relaxed pl-8 border-l border-tertiary/20">
+                  <p>Perfect Fit ni samo način izdelave.</p>
+                  <p>Je občutek, da ti ni treba več iskati kompromisa.</p>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { 
+                    opacity: 1,
+                    transition: { staggerChildren: 0.12 }
+                  }
+                }}
+                className="space-y-16"
+              >
+                {[
+                  { lead: "Ničesar ni treba popravljati.", sub: "Ko nekaj res sede, to začutiš takoj." },
+                  { lead: "Pozornost je samo tvoja.", sub: "En termin. En pogovor. Čas, ki je namenjen tebi." },
+                  { lead: "Ne izbiraš samo kosa.", sub: "Skupaj iščeva občutek, v katerem se prepoznaš." },
+                  { lead: "Vsak detajl ima razlog.", sub: "Linija, dolžina in občutek nastajajo z mislijo nate." },
+                  { lead: "Garderoba se začne sestavljati drugače.", sub: "Ne po kosih, ampak po življenju, ki ga živiš." },
+                  { lead: "Na koncu ne odneseš samo oblačila.", sub: "Odneseš mir, samozavest in občutek, da je to res tvoje." }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                    }}
+                    className="relative pl-10 group"
+                  >
+                    <div className="absolute left-0 top-0 bottom-0 w-px bg-tertiary/10 group-hover:bg-tertiary/40 transition-colors duration-500" />
+                    <div className="absolute left-0 top-1.5 w-1 h-1 rounded-full bg-tertiary/20 group-hover:bg-tertiary transition-colors duration-500" />
+                    <h4 className="text-xl md:text-2xl font-heading text-foreground mb-2.5 tracking-tight group-hover:text-tertiary transition-colors duration-500">
+                      {item.lead}
+                    </h4>
+                    <p className="text-muted-foreground font-light text-lg leading-relaxed max-w-md">
+                      {item.sub}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
 
             {/* Image */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative aspect-4/5 rounded-sm overflow-hidden shadow-2xl"
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="sticky top-24 aspect-4/5 rounded-sm overflow-hidden shadow-2xl"
             >
               <CloudinaryImage
                 src="Body_Andreja_2_osuvgy"
-                alt="Patricia Pie Perfect Fit"
+                alt="Patricia Pie Perfect Fit Detail"
                 fill
                 containerClassName="h-full w-full"
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             </motion.div>
           </div>
         </Section>
 
-        {/* Testimonial */}
-        <Section className="bg-secondary/30 text-center py-20">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-2xl italic font-heading text-foreground/80 mb-6">
-              &quot;Vedno sem imela težave z iskanjem plašča, ker sem visoka. Pri Patricii Pie so mi rokave in dolžino prilagodili do milimetra natančno. Počutim se kot kraljica.&quot;
-            </p>
-            <div className="text-base text-muted-foreground">
-              <span className="font-bold text-foreground block">Maja H.</span>
-              Ljubljana
+        {/* Testimonials Slider */}
+        <Section className="bg-secondary/10 py-32 lg:py-40">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="relative min-h-[300px] flex flex-col items-center justify-center text-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTestimonial}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="space-y-10"
+                >
+                  <blockquote className="text-2xl md:text-3xl font-heading text-foreground leading-[1.4] italic max-w-2xl mx-auto tracking-tight">
+                    &quot;{testimonials[activeTestimonial].quote}&quot;
+                  </blockquote>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="space-y-1"
+                  >
+                    <cite className="not-italic font-bold text-foreground block tracking-wider uppercase text-sm">
+                      {testimonials[activeTestimonial].name}
+                    </cite>
+                    <span className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-light">
+                      {testimonials[activeTestimonial].location}
+                    </span>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Subtle Navigation Dots */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-4">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveTestimonial(i)}
+                    className={`group relative p-2 transition-all duration-500 ${
+                      activeTestimonial === i ? "opacity-100" : "opacity-30 hover:opacity-50"
+                    }`}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                  >
+                    <div className={`h-1 transition-all duration-500 rounded-full ${
+                      activeTestimonial === i ? "w-8 bg-tertiary" : "w-4 bg-foreground"
+                    }`} />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </Section>
@@ -572,71 +708,114 @@ export default function PerfectFitContent() {
         {/* Visual Proof / Gallery - NEW */}
         <Section className="bg-background overflow-hidden border-t border-secondary/20">
             <div className="max-w-6xl mx-auto space-y-12">
-               <div className="text-center max-w-3xl mx-auto space-y-4">
+               <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-center max-w-3xl mx-auto space-y-4"
+               >
                   <Heading size="lg">Razlika je v detajlih</Heading>
                   <p className="text-lg text-muted-foreground">
-                    Perfect Fit ni le o merah. Je o tem, kako oblačilo &apos;pade&apos;, kako se giblje z vami in kako poudari tisto najboljše.
+                    Perfect Fit ni samo v merah. <br />
+                    Je v občutku, kako oblačilo stoji, sledi telesu in pusti, da prideš do izraza ti.
                   </p>
-               </div>
+               </motion.div>
                
-               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { 
+                      opacity: 1,
+                      transition: { staggerChildren: 0.2 }
+                    }
+                  }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8"
+               >
                   {/* Detail 1 */}
-                  <div className="group space-y-4">
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                    }}
+                    className="group space-y-4"
+                  >
                      <div className="relative aspect-3/4 overflow-hidden rounded-sm">
                         <CloudinaryImage 
                            src="Suknjič_Andreja_2_pv1mmn" 
-                           alt="Perfect Fit ramena"
+                           alt="Detajl suknjiča Patricia Pie, ki prikazuje popolno prileganje v ramenih"
                            fill
                            containerClassName="h-full w-full"
                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-tertiary">
-                           Ramena & Rokavi
+                           RAMENA IN ROKAVI
                         </div>
                      </div>
                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Nič več predugih rokavov ali utesnjenih ramen. Kroje prilagodimo vaši drži in dolžini rok.
+                        Ko je linija prava, ni ničesar, kar bi vleklo, stiskalo ali motilo.
+                        Samo občutek, da vse stoji tako, kot mora.
                      </p>
-                  </div>
+                  </motion.div>
 
                   {/* Detail 2 */}
-                  <div className="group space-y-4">
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                    }}
+                    className="group space-y-4"
+                  >
                      <div className="relative aspect-3/4 overflow-hidden rounded-sm">
                         <CloudinaryImage 
                            src="Body_Ana_6_hiytxl" 
-                           alt="Perfect Fit pas"
+                           alt="Poudarek na silhueti pasu pri Patricia Pie izdelavi po meri"
                            fill
                            containerClassName="h-full w-full"
                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
                          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-tertiary">
-                           Pas & Silhueta
+                           PAS IN SILHUETA
                         </div>
                      </div>
                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Poudarimo pas tam, kjer dejansko je. Linije, ki laskajo vaši postavi, ne konfekcijski številki.
+                        Silhueta ne nastaja po konfekciji.
+                        Nastaja po tebi, po tvojem gibanju in občutku v telesu.
                      </p>
-                  </div>
+                  </motion.div>
 
                   {/* Detail 3 */}
-                  <div className="group space-y-4">
+                  <motion.div 
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                    }}
+                    className="group space-y-4"
+                  >
                      <div className="relative aspect-3/4 overflow-hidden rounded-sm">
                         <CloudinaryImage 
                            src="Suknjič_Ana_in_Krilo_Ana_4_i7fzyd" 
-                           alt="Material & Padec"
+                           alt="Detajl suknjiča in krila, ki prikazuje naraven padec materiala"
                            fill
                            containerClassName="h-full w-full"
                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
                          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-tertiary">
-                           Dolžina & Padec
+                           DOLŽINA IN PADEC
                         </div>
                      </div>
                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Plašči in obleke, ki se končajo točno tam, kjer je za vašo višino najbolj elegantno.
+                        Najlepši trenutek je, ko se kos konča točno tam, kjer deluje najbolj naravno.
+                        Mirno. Lahkotno. Pravilno.
                      </p>
-                  </div>
-               </div>
+                  </motion.div>
+               </motion.div>
             </div>
         </Section>
 
@@ -645,6 +824,7 @@ export default function PerfectFitContent() {
         {/* FAQ */}
         <Section className="bg-background">
           <div className="max-w-3xl mx-auto">
+            <p className="text-center text-muted-foreground mb-4 font-light">Vse, kar želiš vedeti, preden narediš prvi korak.</p>
             <Heading size="lg" className="text-center mb-12">Pogosta vprašanja</Heading>
             <div className="space-y-2">
               {faqs.map((faq, index) => (
@@ -655,24 +835,45 @@ export default function PerfectFitContent() {
         </Section>
 
         {/* Final CTA */}
-        <Section className="bg-tertiary/10 text-center py-24">
-          <Heading size="xl" className="mb-6">Želiš izkusiti Perfect Fit?</Heading>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Rezervirajte svoj termin v našem showroomu in dovolite, da ustvarimo nekaj posebnega samo za vas.
-          </p>
-          
-          <div className="mb-10 inline-flex items-center gap-3 px-6 py-3 bg-tertiary/5 rounded-full border border-tertiary/20 text-tertiary hover:bg-tertiary/10 transition-colors cursor-default">
-             <Gift className="w-5 h-5" strokeWidth={1.5} />
-             <span className="font-medium tracking-wide">Prvi obisk je brezplačen</span>
-             <span className="w-1 h-1 rounded-full bg-tertiary/40"></span>
-             <span className="text-sm opacity-80 uppercase tracking-widest font-light">Brez obveznosti</span>
-          </div>
+        <Section className="bg-tertiary/10 text-center py-32 lg:py-40">
+          <div className="max-w-3xl mx-auto space-y-12">
+            <div className="space-y-6">
+              <Heading size="xl" className="font-light tracking-tight">Morda je to tvoj prvi korak.</Heading>
+              <div className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+                <p>Včasih je dovolj en miren pogovor, da začutiš, kaj ti zares ustreza.</p>
+                <p>Prvo srečanje je brezplačno, osebno in brez obveznosti.</p>
+              </div>
+            </div>
 
-          <br />
-          
-          <Button variant="primary" size="lg" onClick={openBooking}>
-            Rezerviraj termin
-          </Button>
+            <div className="space-y-8">
+              <div className="flex flex-col items-center gap-6">
+                <p className="text-sm tracking-[0.3em] uppercase font-medium text-tertiary/80">
+                  Čas zate. Jasna smer. Brez pritiska.
+                </p>
+                
+                <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/50 backdrop-blur-sm rounded-full border border-tertiary/10 text-[11px] uppercase tracking-[0.2em] text-tertiary font-medium">
+                   <span>Prvo srečanje je brezplačno</span>
+                   <span className="w-1 h-1 rounded-full bg-tertiary/30"></span>
+                   <span>brez obveznosti</span>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  onClick={openBooking}
+                  className="px-12 py-7 text-lg"
+                >
+                  Rezerviraj prvo srečanje
+                </Button>
+                
+                <p className="text-xs tracking-widest uppercase font-light text-muted-foreground/60">
+                  Perfect Fit vedno izhaja iz Patricia Pie modelov.
+                </p>
+              </div>
+            </div>
+          </div>
         </Section>
       </main>
 

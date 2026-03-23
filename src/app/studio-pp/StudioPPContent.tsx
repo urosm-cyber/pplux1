@@ -13,7 +13,7 @@ import { useBooking } from '@/components/booking/BookingContext';
 import { Gift, Info } from "lucide-react";
 import CloudinaryImage from '@/components/shared/CloudinaryImage';
 
-export default function ShowroomContent() {
+export default function StudioPPContent() {
   const { openBooking } = useBooking();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -28,7 +28,7 @@ export default function ShowroomContent() {
     },
     {
       question: "Ali je rezervacija obvezna?",
-      answer: "Da, showroom deluje samo po predhodni rezervaciji. Tako lahko zagotovimo, da je termin rezerviran samo za tebe in da imaš našo popolno pozornost."
+      answer: "Da, Studio PP deluje samo po predhodni rezervaciji. Tako lahko zagotovimo, da je termin rezerviran samo za tebe in da imaš našo popolno pozornost."
     },
     {
       question: "Kje parkiram?",
@@ -43,14 +43,14 @@ export default function ShowroomContent() {
       answer: "Seveda! Včasih je res koristno imeti zaupanja vredno mnenje. Prosimo te le, da nas obvestiš, da lahko poskrbimo za dovolj prostora in ugodja."
     },
     {
-      question: "Ali je obisk showrooma plačljiv?",
-      answer: "Da. Showroom termin je zasnovan kot osebno modno svetovanje in Perfect Fit seansa, v kateri je prostor v celoti rezerviran samo zate. Zato ima termin svojo vrednost (69 €), ki se ti ob nakupu v celoti všteje v izbrani kos. Za nove stranke je prvi showroom obisk brezplačen – verjamemo, da se lahko z znamko resnično povežeš šele, ko kose začutiš v živo."
+      question: "Ali je obisk Studia PP plačljiv?",
+      answer: "Prvo srečanje v Studiu PP je brezplačno in brez obveznosti. To je čas za spoznavanje, pogovor o tvojem stilu in prvi stik z modeli Patricia Pie. Verjamemo, da se lahko z znamko resnično povežeš šele, ko kose začutiš v živo."
     }
   ];
 
   const services = [
     { title: "Individualno stiliranje", desc: "Svetovanje glede na tvoj osebni stil, karakter in postavo." },
-    { title: "Perfect Fit meritve", desc: "Meritve se izvajajo direktno v showroomu, brez motenj." },
+    { title: "Perfect Fit meritve", desc: "Meritve se izvajajo direktno v Studiu PP, brez motenj." },
     { title: "Final fitting", desc: "Miren prostor za zadnje prilagoditve in popolno prileganje." },
     { title: "Pie Philosophy", desc: "Gradimo garderobo, ne le posameznih kosov." },
     { title: "Osebno svetovanje", desc: "Globji pogovor o tvojem stilu in dolgotrajni garderobi." },
@@ -69,8 +69,8 @@ export default function ShowroomContent() {
         <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
           <div className="absolute inset-0">
             <Image 
-              src="/images/showroom/detail.png"
-              alt="Patricia Pie Showroom Detail" 
+              src="/images/studio-pp/detail.png"
+              alt="Patricia Pie Studio PP Detail" 
               fill 
               className="object-cover"
               priority
@@ -87,8 +87,8 @@ export default function ShowroomContent() {
           >
             <div className="max-w-4xl space-y-6">
               <Heading as="h1" size="xl" className="text-white drop-shadow-lg font-light tracking-wide">
-                Showroom ni trgovina.<br/>
-                <span className="italic font-serif">Showroom je doživetje.</span>
+                Studio PP ni trgovina.<br/>
+                <span className="italic font-serif">Studio PP je doživetje.</span>
               </Heading>
               <p className="text-xl md:text-2xl font-light drop-shadow-md max-w-2xl mx-auto opacity-90">
                 Intimna, privatna couture izkušnja v osrčju Ljubljane.
@@ -142,7 +142,7 @@ export default function ShowroomContent() {
           </motion.div>
         </Section>
 
-        {/* SHOWROOM SERVICES */}
+        {/* STUDIO PP SERVICES */}
         <Section className="bg-secondary/5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +152,7 @@ export default function ShowroomContent() {
             className="max-w-6xl mx-auto"
           >
             <div className="text-center mb-16">
-              <Heading size="lg" className="mb-4">Showroom Izkušnja</Heading>
+              <Heading size="lg" className="mb-4">Studio PP Izkušnja</Heading>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Vse ključne elemente Patricia Pie filozofije smo združili v eno celovito doživetje.
               </p>
@@ -196,26 +196,24 @@ export default function ShowroomContent() {
             className="max-w-4xl mx-auto"
           >
             <div className="bg-secondary/5 border border-secondary/20 p-8 md:p-12 rounded-sm text-center space-y-6">
-              <Heading size="lg">Showroom termini & styling storitev</Heading>
+              <Heading size="lg">Studio PP termini & styling storitev</Heading>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ljubljanski showroom Patricia Pie deluje izključno po dogovoru. Vsak termin je 
+                Ljubljanski Studio PP Patricia Pie deluje izključno po dogovoru. Vsak termin je 
                 <span className="font-medium text-foreground"> osebna styling & Perfect Fit seansa</span>, 
                 v kateri si Barbara vzame 60–90 minut samo zate – brez drugih strank, brez gneče.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 text-left">
                 <div className="space-y-3">
-                  <h3 className="font-serif text-xl text-foreground">Vrednost storitve</h3>
+                  <h3 className="font-serif text-xl text-foreground">Prvo srečanje</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Styling & Perfect Fit seansa ima svojo ceno (69 €), ki se ti ob nakupu ali naročilu kosa 
-                    <span className="font-medium text-foreground"> v celoti všteje v izbrani kos</span>.
+                    Prvo srečanje je brezplačno in brez obveznosti. To je čas za pogovor, usmeritev in doživetje Patricia Pie kolekcij v mirnem okolju.
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="font-serif text-xl text-foreground">Prvi obisk</h3>
+                  <h3 className="font-serif text-xl text-foreground">Osebna izkušnja</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Za nove stranke je prvi obisk <span className="font-medium text-foreground">posebno povabilo v naš svet – brezplačno</span>, 
-                    kot darilo ob prvem spoznanju z znamko Patricia Pie.
+                    Barbara si vzame 60–90 minut samo zate. Brez drugih strank, brez gneče – samo ti in tvoj novi najljubši kos.
                   </p>
                 </div>
               </div>
@@ -254,7 +252,7 @@ export default function ShowroomContent() {
               <Heading size="lg">Tvoja modna zaveznica</Heading>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  V showroomu te pričakam jaz, Barbara. Ne kot modna urednica, ki sodi, ampak kot zaveznica, ki posluša.
+                  V Studiu PP te pričakam jaz, Barbara. Ne kot modna urednica, ki sodi, ampak kot zaveznica, ki posluša.
                 </p>
                 <p>
                   Moja želja je, da se počutiš <span className="text-foreground font-medium">razumljeno, slišano in posebno</span>. 
@@ -316,7 +314,7 @@ export default function ShowroomContent() {
                   <div className="text-sm text-center font-medium text-foreground">
                     <div className="flex items-center gap-2 text-tertiary font-medium">
                       <Info className="w-5 h-5" />
-                      <span>Showroom deluje izključno po predhodni rezervaciji</span>
+                      <span>Studio PP deluje izključno po predhodni rezervaciji</span>
                     </div>
                   </div>
                 </div>

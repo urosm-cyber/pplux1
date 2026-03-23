@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel project ls --yes 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel project ls 2>&1)",
+      "Bash(head:*)",
+      "Bash(cd:*)",
+      "Bash(gh auth:*)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel env ls --token IHneBq68WeiMR7CJfpIyNN6R 2>&1)",
+      "Bash(ls:*)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel whoami 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel switch 2>&1)",
+      "Bash(echo done:*)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel logout 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel login 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && rm -rf .vercel && npx vercel link --yes 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && echo \"re_ZzS6Kxk5_EfqxE6SnZXGE8ee7Rx5tp7Lt\" | npx vercel env add RESEND_API_KEY production 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && echo \"re_ZzS6Kxk5_EfqxE6SnZXGE8ee7Rx5tp7Lt\" | npx vercel env add RESEND_API_KEY preview 2>&1 && echo \"re_ZzS6Kxk5_EfqxE6SnZXGE8ee7Rx5tp7Lt\" | npx vercel env add RESEND_API_KEY development 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel env ls 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel --prod 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel domains ls 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && npx vercel alias ls 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && git checkout dev && git checkout -b feature/locations 2>&1)",
+      "Bash(cd /f/DEVUM/pplux1 && git push -u origin feature/locations 2>&1)",
+      "WebFetch(domain:perfectdresscode.si)",
+      "WebSearch",
+      "WebFetch(domain:www.zoofa.si)",
+      "Bash(tail:*)",
+      "Bash(cd \"F:\\\\DEVUM\\\\pplux1\" && vercel env pull .env.local 2>&1)",
+      "Bash(grep:*)",
+      "Bash(cd \"F:\\\\DEVUM\\\\pplux1\" && echo \"dqofx6x3k\" | vercel env add NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME development 2>&1)",
+      "Bash(cd \"F:\\\\DEVUM\\\\pplux1\" && echo \"633547788279555\" | vercel env add CLOUDINARY_API_KEY development 2>&1 && echo \"tXHJDj5qb_9BzK-9C5lTuxTqgzI\" | vercel env add CLOUDINARY_API_SECRET development 2>&1)",
+      "Bash(cd F:/DEVUM/pplux1 && npm run build 2>&1)",
+      "Bash(npx vercel:*)",
+      "WebFetch(domain:patriciapie.si)",
+      "Bash(gh repo:*)"
+    ]
+  }
+}

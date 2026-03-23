@@ -49,7 +49,7 @@ export default function ContactPage() {
                      <div className="flex gap-4">
                         <MapPin className="h-6 w-6 text-tertiary shrink-0" />
                         <div>
-                           <h3 className="font-bold">Showroom Ljubljana</h3>
+                           <h3 className="font-bold">Studio PP Ljubljana</h3>
                            <p className="text-muted-foreground">Stegne 7, 1000 Ljubljana</p>
                            <p className="text-sm text-muted-foreground mt-1">Po dogovoru</p>
                         </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                         className="w-full h-11 px-4 border border-input bg-background focus:outline-none focus:ring-1 focus:ring-tertiary transition-all"
                      >
                         <option value="Splošno">Splošno povpraševanje</option>
-                        <option value="Showroom">Rezervacija termina (Showroom)</option>
+                        <option value="Studio PP">Rezervacija termina (Studio PP)</option>
                         <option value="Perfect Fit">Perfect Fit svetovanje</option>
                      </select>
                   </div>

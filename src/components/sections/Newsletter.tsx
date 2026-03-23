@@ -25,16 +25,17 @@ export default function Newsletter() {
   }
 
   return (
-    <Section className="bg-secondary/10 py-20">
-       <div className="max-w-2xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-             <Heading size="lg">Pridruži se zgodbi</Heading>
-             <p className="text-muted-foreground leading-relaxed">
-               Bodi prva obveščena o novih kolekcijah, ekskluzivnih dogodkih v showroomu in navdihu iz sveta Patricia Pie.
+    <Section className="bg-secondary/10 py-24 md:py-32">
+       <div className="max-w-2xl mx-auto text-center space-y-12">
+          <div className="space-y-6">
+             <Heading size="lg" className="tracking-tight">Ostani blizu.</Heading>
+             <p className="text-muted-foreground/80 leading-relaxed text-lg max-w-xl mx-auto">
+               Občasno pošljemo novico, ki ni samo novica. <br className="hidden md:block" />
+               Vabilo v studio, nov pogled, nov občutek — in trenutke, ki jih delimo le redko.
              </p>
           </div>
 
-          <form action={handleSubmit} className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+          <form action={handleSubmit} className="flex flex-col md:flex-row gap-4 max-w-md mx-auto pt-2">
              {/* Honeypot field for spam protection */}
              <input 
                type="text" 
@@ -48,10 +49,10 @@ export default function Newsletter() {
                type="email" 
                placeholder="Tvoj e-naslov"
                required
-               className="flex-1 px-4 py-3 bg-white border border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/50 font-light"
+               className="flex-1 px-4 py-3 bg-white border border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/40 font-light"
              />
-             <Button type="submit" variant="primary" disabled={pending} className="whitespace-nowrap">
-               {pending ? 'Pošiljanje...' : 'Prijava'}
+             <Button type="submit" variant="primary" disabled={pending} className="whitespace-nowrap px-10">
+               {pending ? 'Pošiljanje...' : 'Pridruži se'}
              </Button>
           </form>
 
@@ -61,8 +62,9 @@ export default function Newsletter() {
             </div>
           )}
           
-          <p className="text-xs text-muted-foreground/60">
-             S prijavo se strinjaš z našo politiko zasebnosti. Odjaviš se lahko kadarkoli.
+          <p className="text-xs text-muted-foreground/50 max-w-sm mx-auto leading-loose">
+             S prijavo se strinjaš z našo politiko zasebnosti. <br className="hidden md:block" />
+             Odjaviš se lahko kadarkoli.
           </p>
        </div>
     </Section>

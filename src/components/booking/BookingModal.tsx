@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { sendBookingInquiry } from '@/app/actions';
 
 const locations = [
-  { id: 'showroom', name: 'Showroom Ljubljana (Stegne 7)', label: 'Showroom S7, Ljubljana (Priporočeno)' },
+  { id: 'studio-pp', name: 'Studio PP Ljubljana (Stegne 7)', label: 'Studio PP, Ljubljana (Priporočeno)' },
   { id: 'zoofa', name: 'Zoofa Butik (Ljubljana Center)', label: 'Zoofa Butik, Ljubljana Center' },
   { id: 'atelje', name: 'Atelje (Gornja Radgona)', label: 'Atelje, Gornja Radgona' }
 ];
@@ -66,8 +66,8 @@ export default function BookingModal() {
               {/* Left Side - Visual (Hidden on mobile) */}
               <div className="hidden md:block w-1/3 lg:w-2/5 relative min-h-[600px] bg-secondary/10">
                 <Image
-                  src="/images/showroom/detail.png" /* Fallback to a known image */
-                  alt="Patricia Pie Showroom"
+                  src="/images/studio-pp/detail.png" /* Fallback to a known image */
+                  alt="Patricia Pie Studio PP"
                   fill
                   className="object-cover opacity-90"
                 />
@@ -205,7 +205,7 @@ export default function BookingModal() {
                               name="location"
                               required
                               className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors text-foreground rounded-t-sm appearance-none"
-                              defaultValue="showroom"
+                              defaultValue="Studio PP, Ljubljana (Priporočeno)"
                             >
                               {locations.map((loc) => (
                                 <option key={loc.id} value={loc.label}>

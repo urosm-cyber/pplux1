@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
-import ShowroomContent from './ShowroomContent';
+import StudioPPContent from './StudioPPContent';
 
 export const metadata: Metadata = {
-  title: 'Showroom Ljubljana | Patricia Pie',
+  title: 'Studio PP Ljubljana | Patricia Pie',
   description: 'Obiščite naš intimni modni salon v Ljubljani. Osebno svetovanje, pomerjanje in couture izkušnja z Barbaro Franjić.',
 };
 
-export default function ShowroomPage() {
-  return <ShowroomContent />;
+export default function StudioPPPage() {
+  return <StudioPPContent />;
 }

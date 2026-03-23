@@ -47,8 +47,8 @@ export default function Header() {
           <Link href="/perfect-fit" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
             Perfect Fit
           </Link>
-          <Link href="/showroom" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
-            Showroom
+          <Link href="/studio-pp" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
+            Studio PP
           </Link>
           <Link href="/o-znamki" className="text-sm uppercase tracking-widest hover:opacity-70 transition-opacity font-medium">
             Zgodba

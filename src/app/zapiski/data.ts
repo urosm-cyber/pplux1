@@ -54,11 +54,11 @@ export const journalPosts: BlogPost[] = [
   },
   {
     id: "3",
-    slug: "dan-v-showroomu",
-    title: "Dan v Showroomu: Tvoja osebna modna oaza",
-    excerpt: "Brez hitenja, ob kavi in sproščenem pogovoru. Kako izgleda obisk v našem Showroomu S7?",
+    slug: "dan-v-studiu-pp",
+    title: "Dan v Studiu PP: Tvoja osebna modna oaza",
+    excerpt: "Brez hitenja, ob kavi in sproščenem pogovoru. Kako izgleda obisk v našem Studiu PP?",
     content: `
-      <p>Showroom S7 ni običajna trgovina. Je prostor, ustvarjen z mislijo nate. Želeli smo ustvariti okolje, kjer se čas ustavi in kjer je edini fokus ti in tvoje počutje.</p>
+      <p>Studio PP ni običajna trgovina. Je prostor, ustvarjen z mislijo nate. Želeli smo ustvariti okolje, kjer se čas ustavi in kjer je edini fokus ti in tvoje počutje.</p>
       <h3>Kaj te čaka?</h3>
       <p>Ob prihodu te vedno pričakamo z nasmehom in dišečo kavo (ali kozarcem penine, če slavimo!). Ni gneče, ni vrste pred garderobo, ni vsiljive glasbe.</p>
       <p>V miru se sprehodiš med stojali, potipaš materiale in si ogledaš barve. Barbara ali naša stilistka ti je na voljo za pogovor – ne za prodajo, ampak za svetovanje. Skupaj pogledamo, kateri kroji bi ti pristajali, in izberemo kose za probo.</p>

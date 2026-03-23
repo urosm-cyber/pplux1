@@ -35,60 +35,49 @@ export default function Hero() {
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
           >
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light mb-6 tracking-wide drop-shadow-2xl">
-              Oblačila, ki te razumejo
+            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-light mb-8 tracking-wide drop-shadow-2xl">
+              Včasih je dovolj en pogled.
             </h1>
           </m.div>
   
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
           >
-            <p className="text-lg md:text-2xl max-w-2xl mb-12 font-light tracking-wider drop-shadow-xl text-white">
-              Popolno prileganje. Osebni pristop. Brezčasna eleganca.
+            <p className="text-lg md:text-xl max-w-xl mb-16 font-light tracking-wider leading-loose drop-shadow-xl text-white/90">
+              Tisti miren trenutek, ko ne popravljaš ničesar več.<br />
+              Samo pogledaš se in veš: to sem jaz.
             </p>
           </m.div>
   
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-6"
+            transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-8"
           >
-              <Button
-                variant="primary"
-                size="lg"
-                className="min-w-[220px] bg-white text-black hover:bg-white/90 border-none"
-                onClick={openBooking}
-              >
-                Rezerviraj termin
-              </Button>
-            <Link href="/kolekcije">
+            <Button
+              variant="primary"
+              size="lg"
+              className="min-w-[220px] bg-white text-black hover:bg-white/90 border-none transition-all duration-300"
+              onClick={openBooking}
+            >
+              Rezerviraj termin
+            </Button>
+            <Link href="/perfect-fit">
               <Button
                 variant="outline"
                 size="lg"
-                className="min-w-[220px] border-white text-white hover:bg-white hover:text-black backdrop-blur-sm"
+                className="min-w-[220px] border-white/50 text-white hover:bg-white hover:text-black backdrop-blur-sm transition-all duration-300"
               >
-                Poglej kolekcijo
+                Odkrij Perfect Fit
               </Button>
             </Link>
           </m.div>
         </div>
-  
-        {/* Scroll Indicator */}
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-bounce"
-        >
-          <span className="text-sm tracking-widest uppercase text-[10px]">
-            Razišči
-          </span>
-        </m.div>
       </section>
     </LazyMotion>
   );

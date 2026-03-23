@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/kolekcije',
     '/perfect-fit',
-    '/showroom',
+    '/studio-pp',
     '/o-znamki',
     '/kontakt',
     '/zasebnost',

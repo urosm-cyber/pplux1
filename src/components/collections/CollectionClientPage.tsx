@@ -191,7 +191,7 @@ export default function CollectionClientPage({
           >
             <Heading size="xl">Želiš videti {collection.title} v živo?</Heading>
             <p className="text-lg text-muted-foreground">
-              Pridi v naš showroom, preizkusi oblačila in se pogovorimo o Perfect Fit možnostih. 
+              Pridi v naš Studio PP, preizkusi oblačila in se pogovorimo o Perfect Fit možnostih. 
               Vsak kos lahko prilagodimo tvoji popolni meri.
             </p>
             <BookingCTA title={collection.title} />

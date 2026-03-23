@@ -142,7 +142,7 @@ export default function CollectionsContent() {
           >
             <h2 className="text-3xl md:text-4xl font-heading">Želiš videti kose v živo?</h2>
             <p className="text-lg text-muted-foreground">
-              Pridi v naš showroom na kavo in ogled. Preizkusi oblačila, pogovorimo se o Perfect Fit možnostih in skupaj najdimo kose, ki so popolni za tebe.
+              Pridi v naš Studio PP na kavo in ogled. Preizkusi oblačila, pogovorimo se o Perfect Fit možnostih in skupaj najdimo kose, ki so popolni za tebe.
             </p>
             <div className="pt-4">
               <button 

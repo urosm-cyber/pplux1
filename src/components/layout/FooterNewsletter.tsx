@@ -54,10 +54,11 @@ export default function FooterNewsletter() {
   }
 
   return (
-    <div className="space-y-3">
-      <h4 className="font-heading text-lg font-semibold">Ostanite v stiku</h4>
-      <p className="text-sm text-muted-foreground">
-        Prejemajte vabila na dogodke in novosti.
+    <div className="space-y-4">
+      <h4 className="font-heading text-lg font-medium text-foreground/90">Ostani blizu</h4>
+      <p className="text-sm text-muted-foreground/80 leading-relaxed font-light">
+        Občasno pošljemo kaj lepega. <br />
+        Vabilo v studio, nov pogled ali trenutek iz sveta Patricia Pie.
       </p>
       
       <form action={handleSubmit} className="relative max-w-xs">

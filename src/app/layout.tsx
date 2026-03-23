@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'Patricia Pie',
     images: [
       {
-        url: '/images/showroom-s7.png', // Fallback to showroom image
+        url: '/images/studio-pp.png', // Fallback to Studio PP image
         width: 1200,
         height: 630,
         alt: 'Patricia Pie Couture',
@@ -56,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sl">
+    <html lang="sl" suppressHydrationWarning>
       <body
         className={`${cormorant.variable} ${dmSans.variable} antialiased`}
         suppressHydrationWarning
@@ -77,7 +77,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ClothingStore",
               "name": "Patricia Pie",
-              "image": "https://www.patriciapie.si/images/showroom-s7.png",
+              "image": "https://www.patriciapie.si/images/studio-pp.png",
               "description": "Slovenska modna hiša, kjer se eleganca sreča z udobjem. Kroji, ki te razumejo, osebni pristop in brezčasen dizajn.",
               "address": {
                 "@type": "PostalAddress",

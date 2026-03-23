@@ -20,62 +20,63 @@ export default function Footer() {
                   className="object-contain object-left"
                 />
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Slovenska modna hiša, kjer se eleganca sreča z udobjem. Kroji, ki te razumejo, osebni pristop in brezčasen dizajn.
+            <p className="text-sm text-muted-foreground/90 leading-relaxed max-w-xs font-light">
+              Patricia Pie nastaja počasi, osebno in z občutkom. <br />
+              Za ženske, ki iščejo več kot le nekaj novega.
             </p>
           </div>
 
           {/* Links Column */}
-          <div className="space-y-4">
-            <h3 className="font-heading text-lg font-semibold">Razišči svet Pie</h3>
-            <nav className="flex flex-col space-y-2 text-sm text-muted-foreground/80">
+          <div className="space-y-5">
+            <h3 className="font-heading text-lg font-medium">Razišči svet Pie</h3>
+            <nav className="flex flex-col space-y-2.5 text-sm text-muted-foreground/80">
               <Link href="/kolekcije" className="hover:text-tertiary transition-colors w-fit">Kolekcije</Link>
               <Link href="/perfect-fit" className="hover:text-tertiary transition-colors w-fit">Perfect Fit</Link>
-              <Link href="/showroom" className="hover:text-tertiary transition-colors w-fit">Showroom</Link>
+              <Link href="/studio-pp" className="hover:text-tertiary transition-colors w-fit">Studio</Link>
               <Link href="/o-znamki" className="hover:text-tertiary transition-colors w-fit">O znamki</Link>
             </nav>
           </div>
 
           {/* Contact Column */}
-          <div className="space-y-4">
-            <h3 className="font-heading text-lg font-semibold">Kontakt</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground/80">
+          <div className="space-y-5">
+            <h3 className="font-heading text-lg font-medium">Kontakt</h3>
+            <ul className="space-y-4 text-sm text-muted-foreground/80">
               <li className="flex flex-col">
-                <span className="font-medium text-foreground">Showroom</span>
-                <span>Stegne 7, 1000 Ljubljana</span>
+                <span className="font-medium text-foreground">Studio</span>
+                <span className="font-light">Stegne 7, 1000 Ljubljana</span>
               </li>
               <li className="flex flex-col">
                 <span className="font-medium text-foreground">Atelje</span>
-                <span>Jurkovičeva ulica 1, 9250 Gornja Radgona</span>
+                <span className="font-light">Jurkovičeva ulica 1, 9250 Gornja Radgona</span>
               </li>
               <li className="pt-2">
-                <span className="block text-xs text-muted-foreground uppercase tracking-wider mb-1">Rezervacije & Klepet</span>
-                <a href="mailto:info@patriciapie.si" className="hover:text-tertiary transition-colors block">info@patriciapie.si</a>
-                <a href="tel:+38641988384" className="hover:text-tertiary transition-colors block">+386 41 988 384</a>
+                <span className="block text-[10px] text-muted-foreground/60 uppercase tracking-widest mb-1.5">Rezervacije & klepet</span>
+                <a href="mailto:info@patriciapie.si" className="hover:text-tertiary transition-colors block font-light">info@patriciapie.si</a>
+                <a href="tel:+38641988384" className="hover:text-tertiary transition-colors block font-light">+386 41 988 384</a>
               </li>
-              <li className="text-xs pt-1 italic">
+              <li className="text-[11px] pt-1 italic opacity-70">
                 Odprto po predhodnem dogovoru.
               </li>
             </ul>
           </div>
 
           {/* Newsletter & Socials Column */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             <FooterNewsletter />
             
-            <div className="space-y-3">
-              <h3 className="text-sm font-medium">Spremljaj nas</h3>
-              <div className="flex space-x-4 text-muted-foreground">
+            <div className="space-y-4">
+              <h3 className="text-sm font-medium text-foreground/80">Najdeš nas tukaj</h3>
+              <div className="flex space-x-5 text-muted-foreground/70">
                 <a href="https://www.instagram.com/patricia_pie/" target="_blank" rel="noopener noreferrer" className="hover:text-tertiary transition-colors">
-                  <Instagram className="h-5 w-5" />
+                  <Instagram className="h-5 w-5 stroke-[1.5]" />
                   <span className="sr-only">Instagram</span>
                 </a>
                 <a href="https://www.facebook.com/PatriciaPieFashion" target="_blank" rel="noopener noreferrer" className="hover:text-tertiary transition-colors">
-                  <Facebook className="h-5 w-5" />
+                  <Facebook className="h-5 w-5 stroke-[1.5]" />
                   <span className="sr-only">Facebook</span>
                 </a>
                 <a href="https://www.linkedin.com/in/barbara-franjic/" target="_blank" rel="noopener noreferrer" className="hover:text-tertiary transition-colors">
-                  <Linkedin className="h-5 w-5" />
+                  <Linkedin className="h-5 w-5 stroke-[1.5]" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
               </div>

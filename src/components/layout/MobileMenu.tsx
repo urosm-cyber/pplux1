@@ -13,7 +13,7 @@ const menuItems = [
   { label: 'Domov', href: '/' },
   { label: 'Kolekcije', href: '/kolekcije' },
   { label: 'Perfect Fit', href: '/perfect-fit' },
-  { label: 'Showroom', href: '/showroom' },
+  { label: 'Studio PP', href: '/studio-pp' },
   { label: 'Zgodba', href: '/o-znamki' },
   { label: 'Zapiski', href: '/zapiski' },
   { label: 'Kontakt', href: '/kontakt' },
@@ -74,6 +74,18 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
       document.body.style.overflow = 'unset';
     }
     return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
+  // Close menu on resize if screen becomes large
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [isOpen]);
 
   return (

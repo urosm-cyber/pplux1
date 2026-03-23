@@ -46,7 +46,7 @@ export async function subscribeToNewsletter(formData: FormData) {
         <div style="font-family: serif; color: #3D3535; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #C9A66B; border-bottom: 1px solid #C9A66B; padding-bottom: 10px;">Dobrodošla.</h1>
           <p>Zdravo,</p>
-          <p>Hvala, da si se pridružila naši družini. Veseli me, da boš med prvimi izvedela za naše nove kolekcije, dogodke v showroomu in zgodbe iz ateljeja.</p>
+          <p>Hvala, da si se pridružila naši družini. Veseli me, da boš med prvimi izvedela za naše nove kolekcije, dogodke v Studiu PP in zgodbe iz ateljeja.</p>
           <p>Pri Patricia Pie verjamemo, da moda ni le oblačilo, ampak občutek.</p>
           <br/>
           <p>Lep pozdrav,</p>
