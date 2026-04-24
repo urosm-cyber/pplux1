@@ -2,12 +2,7 @@
 
 import { CldImage, CldImageProps } from 'next-cloudinary';
 import { useState } from 'react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from '@/lib/utils';
 
 interface CloudinaryImageProps extends Omit<CldImageProps, 'src'> {
   src: string; // Enforce src as string (publicId)
@@ -33,11 +28,12 @@ export default function CloudinaryImage({
     <div
       className={cn(
         'relative overflow-hidden bg-secondary/20',
+        fill && 'h-full w-full',
         {
           'aspect-square': aspectRatio === 'square',
           'aspect-video': aspectRatio === 'video',
-          'aspect-3/4': aspectRatio === 'portrait',
-          'aspect-4/3': aspectRatio === 'landscape',
+          'aspect-[3/4]': aspectRatio === 'portrait',
+          'aspect-[4/3]': aspectRatio === 'landscape',
         },
         containerClassName
       )}

@@ -90,7 +90,7 @@ export default function CollectionsContent() {
               >
                 <Link href={`/kolekcije/${collection.id}`} className="group block">
                   {/* Image Container */}
-                  <div className="relative overflow-hidden aspect-3/4 mb-6 rounded-sm shadow-lg">
+                  <div className="relative overflow-hidden aspect-[3/4] mb-6 rounded-sm shadow-lg">
                     <CloudinaryImage 
                       src={collection.image} 
                       alt={collection.title}

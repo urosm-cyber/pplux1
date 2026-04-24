@@ -10,13 +10,13 @@ import { Button } from '@/components/ui/Button';
 import { useBooking } from '@/components/booking/BookingContext';
 
 const menuItems = [
-  { label: 'Domov', href: '/' },
-  { label: 'Kolekcije', href: '/kolekcije' },
-  { label: 'Perfect Fit', href: '/perfect-fit' },
-  { label: 'Studio PP', href: '/studio-pp' },
-  { label: 'Zgodba', href: '/o-znamki' },
-  { label: 'Zapiski', href: '/zapiski' },
-  { label: 'Kontakt', href: '/kontakt' },
+  { label: 'Domov',       href: '/',                            external: false },
+  { label: 'Kolekcije',   href: '/kolekcije',                   external: false },
+  { label: 'Perfect Fit', href: '/perfect-fit',                 external: false },
+  { label: 'Studio PP',   href: '/studio-pp',                   external: false },
+  { label: 'Zgodba',      href: '/o-znamki',                    external: false },
+  { label: 'Zapiski',     href: '/zapiski',                     external: false },
+  { label: 'Kontakt',     href: '/kontakt',                     external: false },
 ];
 
 
@@ -143,13 +143,25 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
             >
               {menuItems.map((item) => (
                 <motion.div key={item.href} variants={itemVariants}>
-                  <Link
-                    href={item.href}
-                    className="text-3xl font-heading font-medium tracking-wide text-[#3D3535] hover:text-[#C9A66B] transition-colors"
-                    onClick={toggleMenu}
-                  >
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-3xl font-heading font-medium tracking-wide text-[#3D3535] hover:text-[#947840] transition-colors"
+                      onClick={toggleMenu}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="text-3xl font-heading font-medium tracking-wide text-[#3D3535] hover:text-[#947840] transition-colors"
+                      onClick={toggleMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div variants={itemVariants} className="pt-8">
@@ -159,7 +171,7 @@ export default function MobileMenu({ isScrolled }: MobileMenuProps) {
                       toggleMenu();
                       openBooking();
                     }} 
-                    className="w-64 text-lg py-7 bg-[#C9A66B] hover:bg-[#b08d55] text-white rounded-none tracking-wider uppercase"
+                    className="w-64 text-lg py-7 bg-[#947840] hover:bg-[#7a6234] text-white rounded-none tracking-wider uppercase"
                  >
                     Rezerviraj termin
                  </Button>

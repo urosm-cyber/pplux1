@@ -10,7 +10,7 @@ import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useBooking } from '@/components/booking/BookingContext';
-import { Gift, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import CloudinaryImage from '@/components/shared/CloudinaryImage';
 
 export default function StudioPPContent() {
@@ -49,15 +49,15 @@ export default function StudioPPContent() {
   ];
 
   const services = [
-    { title: "Individualno stiliranje", desc: "Svetovanje glede na tvoj osebni stil, karakter in postavo." },
-    { title: "Perfect Fit meritve", desc: "Meritve se izvajajo direktno v Studiu PP, brez motenj." },
-    { title: "Final fitting", desc: "Miren prostor za zadnje prilagoditve in popolno prileganje." },
-    { title: "Pie Philosophy", desc: "Gradimo garderobo, ne le posameznih kosov." },
-    { title: "Osebno svetovanje", desc: "Globji pogovor o tvojem stilu in dolgotrajni garderobi." },
-    { title: "Najnovejše kreacije", desc: "Dostop do najbolj svežih kosov Patricia Pie." },
-    { title: "VIP kolekcije", desc: "Ogled novih kolekcij pred vsemi ostalimi." },
-    { title: "Personalizacije", desc: "Posebne dolžine, barve in detajli po tvoji meri." },
-    { title: "100% zasebnost", desc: "1 stranka = 1 termin. Popolna pozornost samo zate." }
+    { title: "Osebna usmeritev", desc: "Ne gledava samo krojev. Najprej začutiva, kaj ti zares pristaja in v čem se počutiš kot ti." },
+    { title: "Perfect Fit meritve", desc: "Meritve vzamem tukaj, v miru in brez motenj. Da ti ni treba razmišljati, ali bo stvar res sedla." },
+    { title: "Zadnje prilagoditve", desc: "Ko je treba, naredimo še zadnje prilagoditve. Tisti drobni koraki, zaradi katerih je občutek na koncu res pravi." },
+    { title: "Pie Philosophy", desc: "Pri meni ne gre za posamezen kos. Gre za garderobo, ki ima smisel zate in za tvoje življenje." },
+    { title: "Pogovor o tebi", desc: "Pogovoriva se o tvojem ritmu, željah in načinu življenja. Da izbira ni naključna, ampak res tvoja." },
+    { title: "Novi kosi", desc: "V Studio PP lahko v miru vidiš tudi nove kose. Brez hitenja, da začutiš, kaj te res nagovori." },
+    { title: "Posebni izbori", desc: "Nekatere stvari ti pokažem tudi bolj osebno. Ker želim, da imaš občutek bližine, ne množice." },
+    { title: "Prilagoditve zate", desc: "Kadar je mogoče, skupaj uskladimo dolžino, barvo ali detajl. Da stvar ne deluje samo lepo, ampak kot da je res tvoja." },
+    { title: "Popolna zasebnost", desc: "V enem terminu si pri meni samo ti. Da imaš mir, pozornost in prostor, da se res vidiš." }
   ];
 
   return (
@@ -75,8 +75,9 @@ export default function StudioPPContent() {
               className="object-cover"
               priority
             />
-            {/* Subtle overlay for atmosphere only */}
-            <div className="absolute inset-0 bg-black/30" />
+            {/* Overlay: subtly darker at bottom to ground the text, with a soft vignette */}
+            <div className="absolute inset-0 bg-linear-to-b from-black/20 via-black/40 to-black/60 md:bg-black/40" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] opacity-60" />
           </div>
           
           <motion.div 
@@ -85,20 +86,45 @@ export default function StudioPPContent() {
             transition={{ duration: 0.8 }}
             className="relative h-full container mx-auto px-4 flex flex-col justify-center items-center text-center text-white pb-16"
           >
-            <div className="max-w-4xl space-y-6">
-              <Heading as="h1" size="xl" className="text-white drop-shadow-lg font-light tracking-wide">
+            <div className="max-w-4xl space-y-8">
+              {/* EYEBROW */}
+              <motion.span 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="block text-tertiary uppercase tracking-[0.3em] text-xs md:text-sm font-medium mb-4 drop-shadow-sm"
+              >
+                Studio PP
+              </motion.span>
+
+              {/* HEADLINE */}
+              <Heading as="h1" size="xl" className="text-white drop-shadow-lg font-light tracking-wide leading-[1.15]">
                 Studio PP ni trgovina.<br/>
-                <span className="italic font-serif">Studio PP je doživetje.</span>
+                <span className="italic font-serif block mt-2 opacity-95">Je miren, oseben trenutek zate.</span>
               </Heading>
-              <p className="text-xl md:text-2xl font-light drop-shadow-md max-w-2xl mx-auto opacity-90">
-                Intimna, privatna couture izkušnja v osrčju Ljubljane.
+
+              {/* SUBTITLE/BODY */}
+              <p className="text-lg md:text-xl font-light drop-shadow-md max-w-2xl mx-auto opacity-90 leading-relaxed">
+                Tukaj ni hitenja. Ni prilagajanja.<br className="hidden md:block" />
+                Samo prostor, kjer se lahko v miru pogledaš drugače.
               </p>
               
-              <div className="pt-4 flex justify-center">
-                 <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white">
-                     <Gift className="w-5 h-5" strokeWidth={1.5} />
-                     <span className="font-medium tracking-wide">Prvi obisk je brezplačen</span>
-                 </div>
+              {/* CTA ACTIONS */}
+              <div className="pt-6 flex flex-col items-center gap-6">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="min-w-[240px] shadow-xl hover:shadow-tertiary/20 transition-all font-medium tracking-wide h-14 text-base"
+                  onClick={openBooking}
+                >
+                  Rezerviraj svoj termin
+                </Button>
+
+                {/* TRUST SIGNAL BADGE */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-white/80 text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse" />
+                    <span className="tracking-wide">Prvi obisk je brezplačen</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -113,31 +139,60 @@ export default function StudioPPContent() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center space-y-12"
           >
-            <div className="space-y-6">
-              <span className="text-tertiary uppercase tracking-widest text-sm font-medium">Parižsko šik · Cozy & Chic · Modern & Clean</span>
-              <Heading size="lg">Tvoj zasebni modni atelje</Heading>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Prostor deluje kot mešanica parižskega stanovanja, intimnega ateljeja in couture svetovalnice. 
-                Bele stene, lesena obloga za toplino, mehka naravna svetloba in veliko ogledalo za popolne silhuete.
-              </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                To je varen pristan, kjer se čas ustavi. Brez drugih strank, brez motenj, brez pritiska.
-              </p>
+            <div className="space-y-8 max-w-3xl mx-auto">
+              <Heading size="lg" className="font-light tracking-tight">Pri meni si lahko vzameš čas.</Heading>
+              
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-light">
+                  V Studio PP te sprejmem brez hitenja in brez pritiska. 
+                  Želim, da si vzameš čas, se umiriš in začutiš, da ti ni treba ničesar vedeti vnaprej.
+                </p>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  Najprej se usedeva. Spiješ kavo, čaj ali kozarec penine. Potem se pogovoriva. 
+                  Počasi, v miru, tako da se lahko začneš resnično začutiti.
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
-              <div className="p-6 bg-secondary/5 rounded-sm">
-                <h3 className="font-serif text-2xl mb-3 text-foreground">Sprejem</h3>
-                <p className="text-muted-foreground">Osebno te sprejme Barbara. Topel, iskren pozdrav – kot bi obiskala prijateljico.</p>
-              </div>
-              <div className="p-6 bg-secondary/5 rounded-sm">
-                <h3 className="font-serif text-2xl mb-3 text-foreground">Dobrodošlica</h3>
-                <p className="text-muted-foreground">Kava, čaj ali kozarec penine. Trenutek, da zadihaš in se sprostiš.</p>
-              </div>
-              <div className="p-6 bg-secondary/5 rounded-sm">
-                <h3 className="font-serif text-2xl mb-3 text-foreground">Pogovor</h3>
-                <p className="text-muted-foreground">V lounge kotičku se pogovoriva o tvojih željah, stilu in potrebah. Brez hitenja.</p>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="p-8 bg-secondary/5 rounded-sm border border-secondary/10 hover:border-tertiary/20 transition-all text-left"
+              >
+                <h3 className="font-serif text-2xl mb-4 text-foreground">Sprejem</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Najprej te osebno sprejmem. Toplo, mirno in brez distance. Pomembno mi je, da se pri meni počutiš sproščeno.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="p-8 bg-secondary/5 rounded-sm border border-secondary/10 hover:border-tertiary/20 transition-all text-left"
+              >
+                <h3 className="font-serif text-2xl mb-4 text-foreground">Dobrodošlica</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Ponudim ti kavo, čaj ali kozarec penine. Ne kot formalnost, ampak kot trenutek, da se umiriš in zadihaš.
+                </p>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="p-8 bg-secondary/5 rounded-sm border border-secondary/10 hover:border-tertiary/20 transition-all text-left"
+              >
+                <h3 className="font-serif text-2xl mb-4 text-foreground">Pogovor</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Potem se pogovoriva o tebi. O tem, kako se želiš počutiti. In kaj želiš videti, ko se pogledaš v ogledalo.
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         </Section>
@@ -152,9 +207,10 @@ export default function StudioPPContent() {
             className="max-w-6xl mx-auto"
           >
             <div className="text-center mb-16">
-              <Heading size="lg" className="mb-4">Studio PP Izkušnja</Heading>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Vse ključne elemente Patricia Pie filozofije smo združili v eno celovito doživetje.
+              <Heading size="lg" className="mb-4">V Studio PP se vse poveže.</Heading>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+                Želim, da pri meni ne dobiš samo enega trenutka,<br className="hidden md:block" />
+                ampak občutek, da se stvari sestavljajo na pravi način.
               </p>
             </div>
             
@@ -195,25 +251,31 @@ export default function StudioPPContent() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="bg-secondary/5 border border-secondary/20 p-8 md:p-12 rounded-sm text-center space-y-6">
-              <Heading size="lg">Studio PP termini & styling storitev</Heading>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Ljubljanski Studio PP Patricia Pie deluje izključno po dogovoru. Vsak termin je 
-                <span className="font-medium text-foreground"> osebna styling & Perfect Fit seansa</span>, 
-                v kateri si Barbara vzame 60–90 minut samo zate – brez drugih strank, brez gneče.
+            <div className="bg-secondary/5 border border-secondary/20 p-8 md:p-12 rounded-sm text-center space-y-8">
+              <Heading size="lg">V Studio PP si vzamem čas samo zate.</Heading>
+              
+              <p className="text-xl text-foreground/90 leading-relaxed font-light max-w-2xl mx-auto">
+                V Studio PP delam samo po dogovoru,<br className="hidden md:block" />
+                da si lahko zate res vzamem čas.<br className="hidden md:block" />
+                Vsak termin je oseben, miren in brez drugih strank.<br className="hidden md:block" />
+                Običajno traja od 60 do 90 minut.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 text-left">
-                <div className="space-y-3">
-                  <h3 className="font-serif text-xl text-foreground">Prvo srečanje</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Prvo srečanje je brezplačno in brez obveznosti. To je čas za pogovor, usmeritev in doživetje Patricia Pie kolekcij v mirnem okolju.
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 text-left">
+                <div className="space-y-4">
+                  <h3 className="font-serif text-2xl text-foreground">Prvo srečanje</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Prvo srečanje je brezplačno in brez obveznosti.
+                    To je najin čas za pogovor, usmeritev in prvi občutek,
+                    ali je Patricia Pie pravi prostor zate.
                   </p>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="font-serif text-xl text-foreground">Osebna izkušnja</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Barbara si vzame 60–90 minut samo zate. Brez drugih strank, brez gneče – samo ti in tvoj novi najljubši kos.
+                <div className="space-y-4">
+                  <h3 className="font-serif text-2xl text-foreground">Osebni termin</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Ko si pri meni, si pri meni samo ti.
+                    Brez hitenja, brez motenj in brez občutka,
+                    da moraš karkoli vedeti ali izbrati prehitro.
                   </p>
                 </div>
               </div>
@@ -249,24 +311,24 @@ export default function StudioPPContent() {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <Heading size="lg">Tvoja modna zaveznica</Heading>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <Heading size="lg">Ob meni si lahko preprosto ti.</Heading>
+              <div className="space-y-6 text-xl text-foreground/90 leading-relaxed font-light">
                 <p>
-                  V Studiu PP te pričakam jaz, Barbara. Ne kot modna urednica, ki sodi, ampak kot zaveznica, ki posluša.
+                  V Studio PP te pričakam jaz, Barbara.<br />
+                  Mirno, osebno in brez občutka, da moraš karkoli vedeti vnaprej.
                 </p>
                 <p>
-                  Moja želja je, da se počutiš <span className="text-foreground font-medium">razumljeno, slišano in posebno</span>. 
-                  S svojim izurjenim očesom za linije, proporce in barve ti bom pomagala poudariti tvoje prednosti 
-                  in skriti tisto, kar želiš.
+                  Pomembno mi je, da se ob meni počutiš sproščeno, razumljeno in v dobrih rokah.<br />
+                  Da si vzameva čas. Da te poslušam. In da skupaj začutiva, v čem se zares vidiš.
                 </p>
                 <p>
-                  Ko odideš, ne želim le, da si zadovoljna z obleko. Želim, da se počutiš 
-                  <span className="text-foreground font-medium italic"> transformirano, navdihnjeno in samozavestno</span>.
+                  Ko odideš, ne želim, da odneseš le oblačilo.<br />
+                  Želim, da odneseš občutek, da si bolj ti.
                 </p>
               </div>
               
               <div className="pt-4">
-                <p className="font-serif text-2xl text-tertiary">Barbara</p>
+                <p className="font-serif text-3xl text-tertiary">Barbara</p>
               </div>
             </motion.div>
           </div>
@@ -282,7 +344,7 @@ export default function StudioPPContent() {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <Heading size="lg">Kje nas najdeš?</Heading>
+              <Heading size="lg">K meni prideš tukaj.</Heading>
               
               <div className="space-y-6 text-muted-foreground">
                 <div className="flex gap-4">
@@ -293,7 +355,7 @@ export default function StudioPPContent() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Poslovna stavba S7</h3>
+                    <h3 className="font-semibold text-foreground mb-1">Studio PP v Ljubljani</h3>
                     <p>Stegne 7, 1000 Ljubljana</p>
                   </div>
                 </div>
@@ -305,8 +367,8 @@ export default function StudioPPContent() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Parkiranje & Dostop</h3>
-                    <p>Brezplačno parkiranje pred stavbo. Enostaven dostop z obvoznice.</p>
+                    <h3 className="font-semibold text-foreground mb-1">Dostop in parkiranje</h3>
+                    <p>Pred stavbo je na voljo brezplačno parkiranje.<br />Do mene lahko enostavno prideš tudi z obvoznice.</p>
                   </div>
                 </div>
 
@@ -314,7 +376,7 @@ export default function StudioPPContent() {
                   <div className="text-sm text-center font-medium text-foreground">
                     <div className="flex items-center gap-2 text-tertiary font-medium">
                       <Info className="w-5 h-5" />
-                      <span>Studio PP deluje izključno po predhodni rezervaciji</span>
+                      <span>V Studio PP te sprejmem po predhodnem dogovoru.</span>
                     </div>
                   </div>
                 </div>
@@ -326,7 +388,7 @@ export default function StudioPPContent() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <Button variant="outline">Prikaži na Google Maps</Button>
+                <Button variant="outline">Odpri lokacijo v Google Maps</Button>
               </a>
             </motion.div>
 
@@ -366,13 +428,13 @@ export default function StudioPPContent() {
               </svg>
             </div>
             <blockquote className="text-xl md:text-2xl font-light text-foreground mb-8 italic leading-relaxed">
-              &quot;Nisem pričakovala, da bo tak obisk lahko tako sproščujoč. Občutek je bil, 
-              kot da sem ob kavi s prijateljico, ne pa v trgovini. Barbara si je vzela 
-              ves čas sveta in res me je poslušala.&quot;
+              &quot;Prišla sem z občutkom, da spet ne bom čisto vedela, kaj mi zares pristaja.<br />
+              Potem pa sem se v nekem trenutku samo umirila.<br />
+              Barbara me je res poslušala in prvič sem imela občutek, da mi ni treba ničesar popravljati.&quot;
             </blockquote>
             <div className="flex items-center justify-center gap-3">
               <div className="w-10 h-0.5 bg-tertiary/30"></div>
-              <p className="font-medium text-foreground">Ana, Ljubljana</p>
+              <p className="font-medium text-foreground">Maja, Ljubljana</p>
               <div className="w-10 h-0.5 bg-tertiary/30"></div>
             </div>
           </motion.div>

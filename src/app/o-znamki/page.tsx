@@ -57,7 +57,7 @@ export default function AboutPage() {
         <Section className="bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-              <div className="lg:col-span-5 order-2 lg:order-1 relative aspect-3/4 w-full rounded-sm overflow-hidden shadow-xl">
+              <div className="lg:col-span-5 order-2 lg:order-1 relative aspect-[3/4] w-full rounded-sm overflow-hidden shadow-xl">
                  <CloudinaryImage 
                    src="Barbara_-_PATRICIA_PIE_rax9v3.jpg" 
                    alt="Barbara Franjić v ateljeju" 

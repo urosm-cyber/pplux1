@@ -36,7 +36,7 @@ export default function ZapiskiPage() {
             {journalPosts.map((post) => (
               <div key={post.id} className="group flex flex-col h-full">
                 {/* Image Card */}
-                <Link href={`/zapiski/${post.slug}`} className="block relative overflow-hidden aspect-4/3 mb-6 rounded-sm">
+                <Link href={`/zapiski/${post.slug}`} className="block relative overflow-hidden aspect-[4/3] mb-6 rounded-sm">
                    <CloudinaryImage
                       src={post.image}
                       alt={post.title}

@@ -20,8 +20,8 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/90 backdrop-blur-md py-4 shadow-sm border-b border-secondary/20' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'bg-background/95 backdrop-blur-lg py-4 shadow-sm border-b border-tertiary/10' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">

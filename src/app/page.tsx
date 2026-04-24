@@ -164,15 +164,15 @@ export default function Home() {
                 Studio PP
               </Heading>
               <p className="text-xl md:text-2xl text-white/90 font-light italic font-serif">
-                Prostor, kjer se vse za trenutek umiri.
+                Vstopi v miren, oseben trenutek.
               </p>
             </div>
             
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-lg md:text-xl text-white/85 font-light leading-relaxed drop-shadow-md">
-                Najprej pogovor. Potem pomerjanje.<br className="hidden md:block" />
-                In občutek, da ti ni treba hiteti, skrivati ali prilagajati ničesar.<br className="hidden md:block" />
-                Samo ti, Barbara in trenutek, posvečen tebi.
+                Najprej kava ali čaj. Potem pogovor. In nato ustvarjanje.<br className="hidden md:block" />
+                V Studiu PP si vzamemo čas, da te zares začutimo.<br className="hidden md:block" />
+                Brez hitenja in pritiska — samo ti, tvoja zgodba in popoln kroj.
               </p>
             </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, User, Mail, Phone, MessageSquare, Check, MapPin, Sparkles } from 'lucide-react';
+import { X, Phone, Check, Sparkles } from 'lucide-react';
 import { useBooking } from './BookingContext';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
@@ -64,42 +64,45 @@ export default function BookingModal() {
             <div className="w-full max-w-5xl bg-background shadow-2xl rounded-sm overflow-hidden flex flex-col md:flex-row max-h-[90vh] pointer-events-auto border border-secondary/20">
               
               {/* Left Side - Visual (Hidden on mobile) */}
-              <div className="hidden md:block w-1/3 lg:w-2/5 relative min-h-[600px] bg-secondary/10">
+              <div className="hidden md:flex w-1/3 lg:w-[35%] relative min-h-[600px] bg-secondary/10 flex-col">
                 <Image
-                  src="/images/studio-pp/detail.png" /* Fallback to a known image */
+                  src="/images/studio-pp/detail.png"
                   alt="Patricia Pie Studio PP"
                   fill
-                  className="object-cover opacity-90"
+                  className="object-cover opacity-80"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent flex flex-col justify-end p-8 text-white">
-                  <h3 className="font-heading text-3xl mb-2">Želiš svoj termin?</h3>
-                  <div className="space-y-1 mb-8">
-                     <p className="font-light opacity-90">Stegne 7, Ljubljana</p>
-                     <p className="font-light text-sm opacity-75">+386 41 988 384</p>
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-10 text-white">
+                  <h3 className="font-serif italic text-3xl mb-4 tracking-tight">Se želiš oglasiti pri meni?</h3>
+                  <div className="space-y-1 mb-10 opacity-90">
+                     <p className="font-light tracking-wide">Stegne 7, Ljubljana</p>
+                     <p className="font-light text-sm">+386 41 988 384</p>
                   </div>
                   
-                  <div className="mt-8 p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm">
-                    <p className="font-medium text-white mb-2">📞 Osebna potrditev</p>
-                    <p className="font-light text-sm opacity-80 mb-4">
-                      Barbara te bo poklicala v roku 24 ur za potrditev najboljšega termina zate.
-                    </p>
+                  <div className="space-y-6">
+                    <div className="space-y-1.5">
+                      <p className="font-medium text-white/95 text-lg">Osebno se ti oglasim</p>
+                      <p className="font-light text-sm text-white/80 leading-relaxed">
+                        Ko izpolniš obrazec, se ti oglasim osebno in skupaj uskladiva termin.
+                      </p>
+                    </div>
                     
-                     <div className="pt-4 border-t border-white/10">
-                         <p className="font-medium text-white mb-1">🎁 Prvi obisk je brezplačen</p>
-                         <p className="font-light text-sm opacity-80">
-                           Spoznaj nas brez obveznosti.
-                         </p>
-                     </div>
+                    <div className="space-y-1.5">
+                       <p className="font-medium text-white/95 text-lg">Prvi obisk je brezplačen</p>
+                       <p className="font-light text-sm text-white/80 leading-relaxed">
+                         Prvi stik je namenjen temu, da se spoznava in v miru pogovoriva.
+                       </p>
+                    </div>
                   </div>
 
-                  <p className="font-light text-sm mt-8 opacity-75">
-                    &quot;Intimna, privatna couture izkušnja.&quot;
+                  <p className="font-light text-xs mt-12 opacity-60 tracking-widest uppercase">
+                    Miren, oseben trenutek brez pritiska.
                   </p>
                 </div>
               </div>
 
               {/* Right Side - Form */}
-              <div className="flex-1 p-8 md:p-12 overflow-y-auto relative bg-background">
+              <div className="flex-1 p-8 md:p-16 lg:p-20 overflow-y-auto relative bg-background">
+
                 {/* Close Button */}
                 <button 
                   onClick={closeBooking}
@@ -128,22 +131,24 @@ export default function BookingModal() {
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-8">
-                    <div>
-                      <span className="text-tertiary uppercase tracking-widest text-xs font-bold mb-2 block">Osebni dogovor</span>
-                      <Heading size="lg" className="mb-3">Kdaj se vidimo?</Heading>
-                      <p className="text-muted-foreground mb-4">
-                        Izpolni obrazec in Barbara te bo kontaktirala za uskladitev termina, ki ti najbolj ustreza.
+                  <div className="space-y-10">
+                    <div className="space-y-4">
+                      <span className="text-tertiary uppercase tracking-[0.2em] text-[10px] font-bold block opacity-80">OSEBNI TERMIN</span>
+                      <Heading size="lg" className="font-serif italic font-light tracking-tight">Dogovoriva se za termin.</Heading>
+                      <p className="text-muted-foreground max-w-sm leading-relaxed">
+                        Izpolni obrazec in oglasim se ti osebno, da skupaj najdeva termin, ki ti najbolj ustreza.
                       </p>
                       
-                       <div className="flex flex-col gap-3">
-                          <div className="inline-block bg-secondary/10 px-4 py-2 rounded-sm border border-secondary/20 w-fit">
-                            <span className="text-foreground font-medium text-sm flex items-center gap-2"><Sparkles className="w-4 h-4 text-tertiary" /> Prvič pri nas? Prvi obisk je popolnoma brezplačen.</span>
+                       <div className="pt-2">
+                          <div className="inline-flex items-center gap-2.5 text-foreground/70 text-sm font-light italic">
+                            <Sparkles className="w-3.5 h-3.5 text-tertiary/60" /> 
+                            <span>Če se srečava prvič, je prvi obisk brezplačen.</span>
                           </div>
                       </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-10">
+
                       {/* Honeypot field for spam protection */}
                       <input 
                         type="text" 
@@ -152,59 +157,61 @@ export default function BookingModal() {
                         tabIndex={-1} 
                         autoComplete="off"
                       />
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="space-y-2">
-                          <label htmlFor="name" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                            <User className="w-4 h-4 text-tertiary" /> Tvoje ime
+                          <label htmlFor="name" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                            Ime in priimek
                           </label>
                           <input
                             type="text"
                             id="name"
                             name="name"
                             required
-                            className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/50 rounded-t-sm"
+                            className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all placeholder:text-muted-foreground/30 rounded-t-sm"
                             placeholder="Ime in priimek"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label htmlFor="phone" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                            <Phone className="w-4 h-4 text-tertiary" /> Telefon (neobvezno)
+                          <label htmlFor="phone" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                            Telefon (opcijsko)
                           </label>
                           <input
                             type="tel"
                             id="phone"
                             name="phone"
-                            className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/50 rounded-t-sm"
+                            className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all placeholder:text-muted-foreground/30 rounded-t-sm"
                             placeholder="040 123 456"
                           />
                         </div>
                       </div>
 
+
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                          <Mail className="w-4 h-4 text-tertiary" /> E-naslov
+                        <label htmlFor="email" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                          E-naslov
                         </label>
                         <input
                           type="email"
                           id="email"
                           name="email"
                           required
-                          className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/50 rounded-t-sm"
+                          className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all placeholder:text-muted-foreground/30 rounded-t-sm"
                           placeholder="vasje.ime@email.com"
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="space-y-2">
-                          <label htmlFor="location" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-tertiary" /> Lokacija
+                          <label htmlFor="location" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                            Lokacija
                           </label>
                           <div className="relative">
                             <select
                               id="location"
                               name="location"
                               required
-                              className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors text-foreground rounded-t-sm appearance-none"
+                              className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all text-foreground rounded-t-sm appearance-none"
                               defaultValue="Studio PP, Ljubljana (Priporočeno)"
                             >
                               {locations.map((loc) => (
@@ -213,37 +220,39 @@ export default function BookingModal() {
                                 </option>
                               ))}
                             </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground/50">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" /></svg>
                             </div>
                           </div>
                         </div>
 
                         <div className="space-y-2">
-                          <label htmlFor="date" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-tertiary" /> Kdaj ti ustreza?
+                          <label htmlFor="date" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                            Kateri termin ti okvirno ustreza?
                           </label>
                           <input
                             type="date"
                             id="date"
                             name="date"
-                            className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors text-muted-foreground rounded-t-sm"
+                            className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all text-muted-foreground rounded-t-sm"
                           />
                         </div>
                       </div>
 
+
                       <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-                          <MessageSquare className="w-4 h-4 text-tertiary" /> Imaš kakšno vprašanje ali željo? (opcijsko)
+                        <label htmlFor="message" className="text-xs uppercase tracking-widest font-semibold text-foreground/60 flex items-center gap-2">
+                          Mi želiš še kaj napisati? (opcijsko)
                         </label>
                         <textarea
                           id="message"
                           name="message"
-                          rows={3}
-                          className="w-full px-4 py-3 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-colors placeholder:text-muted-foreground/50 rounded-t-sm resize-none"
-                          placeholder="Želim posvet glede Perfect Fit, iščem obleko za poroko..."
+                          rows={4}
+                          className="w-full px-4 py-4 bg-secondary/5 border-b border-secondary/30 focus:border-tertiary outline-none transition-all placeholder:text-muted-foreground/30 rounded-t-sm resize-none"
+                          placeholder="Na primer: zanima me Perfect Fit, iščem nekaj za poseben dogodek ali bi se rada najprej samo oglasila."
                         />
                       </div>
+
 
                       {formState === 'error' && (
                         <div className="p-3 bg-red-50 text-red-600 text-sm rounded-sm">
@@ -251,18 +260,20 @@ export default function BookingModal() {
                         </div>
                       )}
 
-                      <div className="pt-4">
+                      <div className="pt-10">
                         <Button 
                           type="submit" 
                           variant="primary" 
-                          className="w-full md:w-auto min-w-[200px]"
+                          size="lg"
+                          className="w-full md:w-auto min-w-[240px] h-14 text-base"
                           disabled={formState === 'submitting'}
                         >
-                          {formState === 'submitting' ? 'Pošiljanje...' : 'Pošlji povpraševanje'}
+                          {formState === 'submitting' ? 'Pošiljanje...' : 'Pošlji sporočilo'}
                         </Button>
-                        <p className="text-xs text-muted-foreground mt-4 text-center md:text-left">
+                        <p className="text-[11px] text-muted-foreground mt-6 text-center md:text-left opacity-60">
                           Tvoji podatki so varni. Kontaktirali te bomo samo glede tvojega povpraševanja.
                         </p>
+
                         
                         <div className="mt-8 pt-6 border-t border-secondary/20">
                              <p className="text-sm text-muted-foreground mb-2">Se ti mudi?</p>
